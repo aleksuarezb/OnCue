@@ -23,8 +23,8 @@
   --txt:#f0efe8;--txt2:#9a9994;
   --bdr:rgba(255,255,255,0.1);--bdr2:rgba(255,255,255,0.2)
 }}
-body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:100vh;padding:1rem;padding-bottom:4rem}
-.app{max-width:900px;margin:0 auto}
+body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:100vh;padding:.75rem;padding-bottom:4rem}
+.app{max-width:100%;margin:0}
 
 /* header */
 /* ── unified top bar ── */
@@ -88,7 +88,7 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .tile-edit-btn:hover{background:#E6F1FB;border-color:#B5D4F4}
 
 /* chart panel */
-.chart-panel{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1.25rem;margin-bottom:1rem}
+.chart-panel{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1rem .75rem;margin-bottom:1rem}
 .chart-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px}
 .chart-title{font-size:22px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .bpm-badge{font-size:12px;font-weight:400;color:var(--txt2);background:var(--bg2);border:.5px solid var(--bdr2);border-radius:5px;padding:2px 7px;vertical-align:middle;white-space:nowrap;flex-shrink:0}
@@ -131,7 +131,7 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .notes-area{margin-top:1rem;font-size:14px;color:var(--txt2);border-top:.5px solid var(--bdr);padding-top:1rem;line-height:1.7}
 
 /* lyrics panel */
-.lyrics-panel{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1.25rem;margin-top:1rem}
+.lyrics-panel{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1rem .75rem;margin-top:1rem}
 .lyrics-panel h3{font-size:13px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
 .lyric-section{margin-bottom:1.5rem}
 .lyric-line{margin-bottom:10px}
@@ -141,6 +141,9 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 /* Each line is a flex row of chord+word segments */
 /* legacy lyric-seg styles removed — using two-row chord layout */
 .lyric-hint{font-size:12px;color:var(--txt2);margin-top:1rem;font-style:italic;border-top:.5px solid var(--bdr);padding-top:.75rem}
+/* 2-column lyrics layout */
+.lyrics-columns{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem;align-items:start}
+@media(max-width:600px){.lyrics-columns{grid-template-columns:1fr}}
 
 /* verified checkmark — tiny top-left corner */
 .tile-verified{position:absolute;top:6px;left:6px;width:14px;height:14px;display:flex;align-items:center;justify-content:center;background:#EAF3DE;border-radius:50%;flex-shrink:0}
@@ -1307,7 +1310,7 @@ function buildKeySelect(){
 //            → chord shown above whole line
 //   Inline:  {segments:[{n:"4add2",w:"All my life "},{n:"1",w:"You have been faithful"}]}
 //            → chord shown above each word group
-function buildLyricsPanel(song,k){
+function buildLyricsPanel(song,k,twoCol){
   const data=SONG_LYRICS[song.id];
   if(!data||!data.sections||!data.sections.length){
     return `<div class="lyrics-panel"><h3>Lyrics</h3><p class="lyric-hint">No chorus/bridge lyrics on file for this song yet. You can add them via Edit.</p></div>`;
@@ -1357,12 +1360,16 @@ function buildLyricsPanel(song,k){
 
   const editBtn=devMode?`<button class="lyric-edit-btn" onclick="openLyricSpacingEditor(${song.id},'${k}')">&#9999; Adjust spacing</button>`:'';
 
+  const sectionsWrapped=twoCol
+    ? `<div class="lyrics-columns">${sectionsHtml}</div>`
+    : sectionsHtml;
+
   return `<div class="lyrics-panel">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
       <h3 style="margin:0">Chorus &amp; Bridge Lyrics</h3>
       ${editBtn}
     </div>
-    ${sectionsHtml}
+    ${sectionsWrapped}
     <div class="lyric-hint">Chord shown above the word where it lands${settingsShowVerses?"":" · verse lyrics not shown"}</div>
   </div>`;
 }
@@ -1389,7 +1396,7 @@ function renderChart(song,key){
   const showNumbers=lyricsFirst?showingLyrics:true;
   const showLyricsPanel=lyricsFirst?!showingLyrics:showingLyrics;
 
-  const lyricsPanel=showLyricsPanel?buildLyricsPanel(song,k):'';
+  const lyricsPanel=showLyricsPanel?buildLyricsPanel(song,k,lyricsFirst&&!showingLyrics):'';
 
   // Button label + style depends on mode
   let lyricsBtnLabel, lyricsBtnClass;
