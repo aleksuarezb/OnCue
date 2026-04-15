@@ -133,17 +133,17 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 /* lyrics panel */
 .lyrics-panel{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1rem .75rem;margin-top:1rem}
 .lyrics-panel h3{font-size:13px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
-.lyric-section{margin-bottom:1.5rem}
+.lyric-section{margin-bottom:1.5rem;break-inside:avoid;-webkit-column-break-inside:avoid}
 .lyric-line{margin-bottom:10px}
-.lyric-chord-row{font-size:13px;font-weight:700;color:#185FA5;white-space:pre;line-height:1.2;min-height:18px;letter-spacing:0}
-.lyric-word-row{font-size:15px;color:var(--txt);white-space:pre;line-height:1.5}
-.lyric-section-label{font-size:11px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.lyric-chord-row{font-size:15px;font-weight:700;color:#185FA5;white-space:pre;line-height:1.3;min-height:20px;letter-spacing:0}
+.lyric-word-row{font-size:17px;color:var(--txt);white-space:pre;line-height:1.6}
+.lyric-section-label{font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
 /* Each line is a flex row of chord+word segments */
 /* legacy lyric-seg styles removed — using two-row chord layout */
 .lyric-hint{font-size:12px;color:var(--txt2);margin-top:1rem;font-style:italic;border-top:.5px solid var(--bdr);padding-top:.75rem}
 /* 2-column lyrics layout */
-.lyrics-columns{display:grid;grid-template-columns:1fr 1fr;gap:0 1.5rem;align-items:start}
-@media(max-width:600px){.lyrics-columns{grid-template-columns:1fr}}
+.lyrics-columns{columns:2;column-gap:2rem;column-rule:1px solid var(--bdr2);align-items:start}
+@media(max-width:600px){.lyrics-columns{columns:1;column-rule:none}}
 
 /* verified checkmark — tiny top-left corner */
 .tile-verified{position:absolute;top:6px;left:6px;width:14px;height:14px;display:flex;align-items:center;justify-content:center;background:#EAF3DE;border-radius:50%;flex-shrink:0}
@@ -1396,7 +1396,7 @@ function renderChart(song,key){
   const showNumbers=lyricsFirst?showingLyrics:true;
   const showLyricsPanel=lyricsFirst?!showingLyrics:showingLyrics;
 
-  const lyricsPanel=showLyricsPanel?buildLyricsPanel(song,k,lyricsFirst&&!showingLyrics):'';
+  const lyricsPanel=showLyricsPanel?buildLyricsPanel(song,k,true):'';
 
   // Button label + style depends on mode
   let lyricsBtnLabel, lyricsBtnClass;
