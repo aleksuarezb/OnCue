@@ -89,26 +89,26 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 
 /* chart panel */
 .chart-panel{background:var(--bg);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1rem .75rem;margin-bottom:1rem}
-.chart-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px}
+.chart-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:6px}
 .chart-title{font-size:22px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .bpm-badge{font-size:12px;font-weight:400;color:var(--txt2);background:var(--bg2);border:.5px solid var(--bdr2);border-radius:5px;padding:2px 7px;vertical-align:middle;white-space:nowrap;flex-shrink:0}
 .chart-meta{font-size:14px;color:var(--txt2);margin-top:4px}
-.chart-top-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.chart-top-right{display:flex;flex-direction:row;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 .chart-btn-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
 
 /* chart action buttons */
-.close-btn{font-size:15px;font-weight:500;border:.5px solid #c8960a;border-radius:var(--r);padding:10px 20px;background:#FFF3CC;cursor:pointer;color:#7a5c00}
+.close-btn{font-size:13px;font-weight:500;border:.5px solid #c8960a;border-radius:var(--r);padding:6px 14px;background:#FFF3CC;cursor:pointer;color:#7a5c00}
 .close-btn:hover{background:#ffe680}
 .edit-chart-btn{font-size:13px;border:.5px solid #B5D4F4;border-radius:var(--r);padding:6px 14px;background:#E6F1FB;cursor:pointer;color:#185FA5}
 /* line-break spacer in number rows */
 
 /* lyrics button — same size as Library button */
-.lyrics-btn{font-size:15px;font-weight:500;border:.5px solid #C0DD97;border-radius:var(--r);padding:10px 20px;background:#EAF3DE;cursor:pointer;color:#27500A}
+.lyrics-btn{font-size:13px;font-weight:500;border:.5px solid #C0DD97;border-radius:var(--r);padding:6px 14px;background:#EAF3DE;cursor:pointer;color:#27500A}
 .lyrics-btn.active{background:#639922;color:#fff;border-color:#639922}
 
 /* key selector */
 .key-selector{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.key-btn{padding:6px 12px;font-size:14px;border:.5px solid var(--bdr2);border-radius:var(--r);background:var(--bg);color:var(--txt);cursor:pointer;transition:background .12s}
+.key-btn{padding:4px 9px;font-size:13px;border:.5px solid var(--bdr2);border-radius:var(--r);background:var(--bg);color:var(--txt);cursor:pointer;transition:background .12s}
 .key-btn.active{background:#185FA5;color:#fff;border-color:#185FA5}
 
 /* chart sections */
@@ -129,6 +129,30 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .num-box.c6{background:#EEEDFE;border-color:#CECBF6}.num-box.c6 .num{color:#3C3489}
 .num-box.c7{background:#E1F5EE;border-color:#9FE1CB}.num-box.c7 .num{color:#085041}
 .notes-area{margin-top:1rem;font-size:14px;color:var(--txt2);border-top:.5px solid var(--bdr);padding-top:1rem;line-height:1.7}
+
+/* chart light mode */
+.chart-light .chart-panel{background:#fff;border-color:#ddd;color:#000}
+.chart-light .chart-title{color:#000}
+.chart-light .chart-meta{color:#555}
+.chart-light .num-box{background:#f8f8f8;border-color:#ccc}
+.chart-light .num-box .num{color:#000}
+.chart-light .chord-actual{color:#333}
+.chart-light .num-box.c1{background:#dceeff;border-color:#aac8ee}.chart-light .num-box.c1 .num{color:#003a70}
+.chart-light .num-box.c2{background:#fde8e0;border-color:#e8b89e}.chart-light .num-box.c2 .num{color:#6b2010}
+.chart-light .num-box.c3{background:#fde0eb;border-color:#eeaac3}.chart-light .num-box.c3 .num{color:#6b1030}
+.chart-light .num-box.c4{background:#d8f0d8;border-color:#9ed49e}.chart-light .num-box.c4 .num{color:#1a4a1a}
+.chart-light .num-box.c5{background:#fef0d0;border-color:#f0c060}.chart-light .num-box.c5 .num{color:#5a3500}
+.chart-light .num-box.c6{background:#eae8fe;border-color:#b8b4f0}.chart-light .num-box.c6 .num{color:#2c2880}
+.chart-light .num-box.c7{background:#d4f4ea;border-color:#80d8b8}.chart-light .num-box.c7 .num{color:#003a28}
+.chart-light .section-label{color:#555}
+.chart-light .key-btn{background:#f0f0f0;border-color:#ccc;color:#000}
+.chart-light .key-btn.active{background:#185FA5;color:#fff;border-color:#185FA5}
+.chart-light .lyrics-panel{background:#f9f9f9;border-color:#ddd}
+.chart-light .lyric-chord-row{color:#0055aa}
+.chart-light .lyric-word-row{color:#000}
+.chart-light .lyric-section-label{color:#555}
+.chart-light .lyric-hint{color:#777}
+.chart-light .notes-area{color:#555}
 
 /* lyrics panel */
 .lyrics-panel{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1rem .75rem;margin-top:1rem}
@@ -174,7 +198,7 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .kl-cell.kl-b7{background:#F1EFE8;border-color:#D3D1C7}.kl-cell.kl-b7 .kl-num{color:#444441}
 
 /* sync bar */
-.sync-bar{display:flex;align-items:center;gap:8px;background:var(--bg);border:.5px solid var(--bdr2);border-radius:var(--rl);padding:8px 12px;margin-bottom:1rem;flex-wrap:wrap}
+.sync-bar{display:flex;align-items:center;gap:8px;background:var(--bg);border:.5px solid var(--bdr2);border-radius:var(--rl);padding:8px 12px;margin-bottom:1rem;flex-wrap:wrap;min-width:0}
 .sync-role-btn{font-size:13px;padding:6px 14px;border:.5px solid var(--bdr2);border-radius:var(--r);background:var(--bg2);color:var(--txt2);cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
 .sync-role-btn.conductor{background:#185FA5;color:#fff;border-color:#185FA5}
 .sync-role-btn.viewer{background:#EAF3DE;color:#27500A;border-color:#C0DD97}
@@ -374,7 +398,7 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
       <img src="data:image/png;base64,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" alt="OnCue" width="42" height="42" style="border-radius:10px;display:block"/>
     </button>
     <!-- Key selector + legend -->
-    <div class="top-key-section">
+    <div class="top-key-section" id="top-key-section">
       <span class="key-bar-label">&#127929; Key:</span>
       <select id="global-key-select"></select>
       <button class="key-bar-reset" id="key-bar-reset">Per song</button>
@@ -446,6 +470,19 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
         <label class="toggle-wrap">
           <div class="toggle-switch">
             <input type="checkbox" id="setting-show-verses"/>
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </div>
+        </label>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">Light mode for chart &amp; lyrics</div>
+          <div class="setting-hint">White background with black text — like SongSelect</div>
+        </div>
+        <label class="toggle-wrap">
+          <div class="toggle-switch">
+            <input type="checkbox" id="setting-chart-light"/>
             <div class="toggle-track"></div>
             <div class="toggle-thumb"></div>
           </div>
@@ -931,6 +968,243 @@ const SONG_LYRICS={
         {segments:[{n:"5",w:"————————"},{n:"3m",w:"h"}]}
       ]}
     ]
+  },
+
+  // ── 23. Names (Key D) ──────────────────────────────────────────
+  23:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1sus",w:"You are the "},{n:"1",w:"medi- "},  {n:"",w:"cine"}]},
+        {segments:[{n:"1sus",w:"The only "},{n:"1",w:"cure for ev'rything "},{n:"5sus",w:"I feel   within"}]},
+        {segments:[{n:"5sus",w:"Re- "},  {n:"",w:"deeming what was lost and "},{n:"4/6",w:"all that "},{n:"6m",w:"could have been"}]},
+        {segments:[{n:"6m",w:"Oh, "},{n:"5",w:"this is a healing "},{n:"4/1",w:"kind of love"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1sus",w:"You are the "},{n:"1",w:"Truest    Friend"}]},
+        {segments:[{n:"1sus",w:"Staying through the "},{n:"1",w:"night when I was "},{n:"5sus",w:"at   my end"}]},
+        {segments:[{n:"",w:"Comforting my heart till it was "},{n:"6m",w:"light again"}]},
+        {segments:[{n:"6m",w:"Oh, "},{n:"5",w:"this is a faithful "},{n:"4/1",w:"kind of love"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1sus",w:"Everlasting "},{n:"1",w:"Father, "},{n:"5sus",w:"Prince of "},{n:"5(4)",w:"peace"}]},
+        {segments:[{n:"6m",w:"Im- manuel God with us, You're here "},{n:"4/1",w:"with me"}]},
+        {segments:[{n:"1",w:"Wonderful Counselor, the government is "},{n:"5sus",w:"resting"}]},
+        {segments:[{n:"6m",w:"On Your "},{n:"4/1",w:"shoulders"},  {n:"1",w:""}]}
+      ]},
+      {label:"Verse 3",lines:[
+        {segments:[{n:"1sus",w:"You are the "},{n:"1",w:"Final   Word"}]},
+        {segments:[{n:"1sus",w:"You alone de- "},{n:"1",w:"cide when ev'ry "},{n:"5sus",w:"page    will turn"}]},
+        {segments:[{n:"",w:"So I will trust Your timing I will "},{n:"4/6",w:"se- "},{n:"6m",w:"cure my rest"}]},
+        {segments:[{n:"6m",w:"Oh, "},{n:"5",w:"this is a steady "},{n:"4(1)",w:"kind of love"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"1",w:"Your names "},{n:"5sus",w:"say it all, "},  {n:"",w:"they say it all"}]},
+        {segments:[{n:"6m7",w:"I stand in "},{n:"4/1",w:"awe of You"}]}
+      ]}
+    ]
+  },
+
+  // ── 24. Set Me Apart (Key G) ───────────────────────────────────
+  24:{
+    sections:[
+      {label:"Verse",lines:[
+        {segments:[{n:"",w:"   "},{n:"4",w:"Set me a- "},{n:"5",w:"part"}]},
+        {segments:[{n:"",w:"I want to do "},{n:"1",w:"Your "},{n:"1/3",w:"will"}]},
+        {segments:[{n:"",w:"I want to be "},{n:"2m",w:"used by You"}]},
+        {segments:[{n:"",w:"To be a "},{n:"5",w:"vessel You can "},{n:"1",w:"fill"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4",w:"Lord, have Your way in me"}]},
+        {segments:[{n:"1/3",w:"Lord light Your fire in me"}]},
+        {segments:[{n:"2m",w:"Renew my mind"}]},
+        {segments:[{n:"5",w:"Rebuild my life"}]},
+        {segments:[{n:"1",w:"I want to be used by You"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"",w:"   "},{n:"4",w:"Set me a- "},{n:"5",w:"part"}]},
+        {segments:[{n:"",w:"You're the potter "},{n:"1",w:"I'm the "},{n:"1/3",w:"clay"}]},
+        {segments:[{n:"",w:"I want to be "},{n:"2m",w:"used by You"}]},
+        {segments:[{n:"",w:"So "},{n:"5",w:"fill me Lord I "},{n:"1",w:"pray"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"4sus",w:"Make me Ho- "},{n:"4",w:"ly"}]},
+        {segments:[{n:"1/3",w:"Lord draw close to me"}]},
+        {segments:[{n:"2m",w:"Make my heart a "},{n:"5",w:"dwelling place"}]},
+        {segments:[{n:"1",w:"For You, Lord"}]}
+      ]}
+    ]
+  },
+
+  // ── 25. There Is Only One (Key G) ─────────────────────────────
+  25:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"Who takes away our sins"}]},
+        {segments:[{n:"",w:"And heals our brokenness"}]},
+        {segments:[{n:"6m",w:"Only one"}]},
+        {segments:[{n:"4",w:"There is only One"}]},
+        {segments:[{n:"1",w:"Who redeems us from the pit"}]},
+        {segments:[{n:"",w:"And crowns with righteousness"}]},
+        {segments:[{n:"6m",w:"Only one"}]},
+        {segments:[{n:"4",w:"There is only One"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"Oh come and "},{n:"2m",w:"praise the "},{n:"6m",w:"king of "},{n:"5",w:"kings"}]},
+        {segments:[{n:"1",w:"Oh come and "},{n:"2m",w:"give Him "},{n:"6m",w:"every- "},{n:"5",w:"thing"}]},
+        {segments:[{n:"3/5",w:"Bring every "},{n:"4",w:"failure"}]},
+        {segments:[{n:"6m",w:"Every victory"}]},
+        {segments:[{n:"",w:"Oh my "},{n:"5",w:"soul"}]},
+        {segments:[{n:"",w:"Let all within me"}]},
+        {segments:[{n:"3/5",w:"Come and "},{n:"4",w:"praise"}]},
+        {segments:[{n:"6m",w:"The Lamb"}]},
+        {segments:[{n:"5",w:"Who's seated on the throne"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"Who is the Lion and the Lamb"}]},
+        {segments:[{n:"",w:"Fully God and fully man"}]},
+        {segments:[{n:"6m",w:"Only one"}]},
+        {segments:[{n:"4",w:"There is only One"}]},
+        {segments:[{n:"1",w:"Who has overcome the grave"}]},
+        {segments:[{n:"",w:"And is coming back again"}]},
+        {segments:[{n:"6m",w:"Only one"}]},
+        {segments:[{n:"4",w:"There is only One"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"3/5",w:"O my soul, all that's within me"}]},
+        {segments:[{n:"4",w:"Get light and shake off what's heavy"}]},
+        {segments:[{n:"3/5",w:"O my soul, get up and "},{n:"4",w:"praise the Lord"}]},
+        {segments:[{n:"3b/1",w:"There Is Only "},{n:"1",w:"One"}]}
+      ]}
+    ]
+  },
+
+  // ── 26. You Hold It All Together (Key D) ──────────────────────
+  26:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"You come at the "},{n:"4add2",w:"right  "},{n:"1",w:"time"}]},
+        {segments:[{n:"4add2",w:"When I least ex- "},{n:"6m7",w:"pect   it nev- "},{n:"5(4)",w:"er   be- "},{n:"4add2",w:"hind"}]},
+        {segments:[{n:"1",w:"So why would I be "},{n:"4add2",w:"sur- "},{n:"1",w:"prised"}]},
+        {segments:[{n:"4add2",w:"When You de- "},{n:"6m7",w:"liver ev- "},{n:"5(4)",w:"'ry "},{n:"4add2",w:"time"}]}
+      ]},
+      {label:"Pre-Chorus",lines:[
+        {segments:[{n:"5(4)",w:"On mountain- "},{n:"4add2",w:"tops    You "},{n:"1",w:"stay the same"}]},
+        {segments:[{n:"5(4)",w:"In valleys "},{n:"4add2",w:"low     You "},{n:"1",w:"never change"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"And I be- "},{n:"4add2",w:"lieve that I "},{n:"5(4)",w:"will "},{n:"6m7",w:"see"}]},
+        {segments:[{n:"1/3",w:"The goodness "},{n:"4add2",w:"of "},{n:"5(4)",w:"the Lord"}]},
+        {segments:[{n:"1",w:"I'm confi- "},{n:"4add2",w:"dent as "},{n:"5(4)",w:"seasons "},{n:"6m7",w:"change"}]},
+        {segments:[{n:"4add2",w:"Your faithful- "},{n:"5(4)",w:"ness re- "},{n:"1",w:"mains"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"You go "},{n:"4add2",w:"You go be- "},{n:"1",w:"fore me"}]},
+        {segments:[{n:"4add2",w:"To pre- "},{n:"6m7",w:"pare a blessing "},{n:"5(4)",w:"You make a "},{n:"4add2",w:"way"}]},
+        {segments:[{n:"1",w:"It's more than I could "},{n:"4add2",w:"i- "},{n:"1",w:"magine"}]},
+        {segments:[{n:"4add2",w:"More than I "},{n:"6m7",w:"can fathom or com- "},{n:"5(4)",w:"pre- "},{n:"4add2",w:"hend"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"1",w:"God of my present"}]},
+        {segments:[{n:"6m7",w:"God of my future"}]},
+        {segments:[{n:"1/3",w:"You write my story"}]},
+        {segments:[{n:"4add2",w:"You hold it all together"}]}
+      ]}
+    ]
+  },
+
+  // ── 27. Ancient of Days (Key D) ───────────────────────────────
+  27:{
+    sections:[
+      {label:"Verse",lines:[
+        {segments:[{n:"1",w:"Blessing and "},{n:"2m/1",w:"hon- "},{n:"1",w:"or  glory and "},{n:"2m/1",w:"pow- "},{n:"1",w:"er"}]},
+        {segments:[{n:"1",w:"Be unto the "},{n:"5/3",w:"Ancient "},{n:"6m",w:"of  "},{n:"5/3",w:"Days"}]},
+        {segments:[{n:"1",w:"From ev- 'ry "},{n:"2m/1",w:"na- "},{n:"1",w:"tion  all of "},{n:"2m/1",w:"crea- "},{n:"1",w:"tion"}]},
+        {segments:[{n:"6m7",w:"Bow   before the Ancient of "},{n:"5/3",w:"  "},{n:"1",w:"Days"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4",w:"Ev'ry tongue in "},{n:"6m7",w:"heaven and earth shall de- "},{n:"5",w:"clare "},{n:"1/3",w:"Your glory"}]},
+        {segments:[{n:"4",w:"Ev'ry knee shall "},{n:"6m7",w:"bow  at Your throne in "},{n:"5",w:"wor- "},{n:"1/3",w:"ship "},{n:"3m7",w:""}]},
+        {segments:[{n:"4",w:"You will be ex- "},{n:"6m7",w:"alted   "},{n:"5",w:"O God"}]},
+        {segments:[{n:"1/3",w:"And "},{n:"4",w:"Your kingdom shall "},{n:"6m7",w:"not  "},{n:"5",w:"pass a- way"}]},
+        {segments:[{n:"4/5",w:"O Ancient of "},{n:"1",w:"Days"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"1",w:"Your kingdom shall reign over all the earth"}]},
+        {segments:[{n:"4/1",w:"Sing un- "},{n:"1/4",w:"to  "},{n:"2m/4",w:"the An- "},{n:"4/1",w:"cient of "},{n:"1b5",w:"Days"}]},
+        {segments:[{n:"1",w:"For none can compare to Your matchless worth"}]},
+        {segments:[{n:"4/1",w:"Sing un- "},{n:"1/4",w:"to  "},{n:"2m/4",w:"the An- "},{n:"4/1",w:"cient of "},{n:"1",w:"Days  "},{n:"1/3",w:""}]}
+      ]}
+    ]
+  },
+
+  // ── 28. Firm Foundation (He Won't) (Key D) ────────────────────
+  28:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1sus",w:"Christ is my firm "},{n:"1",w:"foun- "},{n:"6m7",w:"dation, the rock "},{n:"5(4)",w:"on which I stand"}]},
+        {segments:[{n:"1sus",w:"When ev'rything a- "},{n:"1",w:"round me "},{n:"6m7",w:"is shaken,  I've never been more "},{n:"5(4)",w:"glad"}]},
+        {segments:[{n:"4",w:"That I put my faith in Jesus, "},{n:"1/3",w:"'cause He's never let me "},{n:"6m7",w:"down "},{n:"5(4)",w:""}]},
+        {segments:[{n:"4",w:"He's faithful through generations, "},{n:"1/3",w:"so why "},{n:"6m7",w:"would He fail "},{n:"5(4)",w:"now"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"He won't, "},{n:"1sus",w:"He won't"}]},
+        {segments:[{n:"6m",w:"He won't fail, "},{n:"5",w:"He won't "},{n:"4maj7",w:"fail"}]},
+        {segments:[{n:"6m",w:"He won't fail "},{n:"5",w:"  "},{n:"1",w:"  "},{n:"1/3",w:"  "},{n:"4maj7",w:""}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1sus",w:"I've still got "},{n:"1",w:"joy   in "},{n:"6m7",w:"chaos, I've got peace that "},{n:"5(4)",w:"makes no sense"}]},
+        {segments:[{n:"4",w:"So I won't be "},{n:"1/3",w:"go- "},{n:"6m",w:"ing  un- "},{n:"1",w:"der, I'm not held "},{n:"6m7",w:"by my own "},{n:"5(4)",w:"strength"}]},
+        {segments:[{n:"4/3",w:"'Cause I've built my "},{n:"1/3",w:"life   on Jesus, "},{n:"6m7",w:"He's never let "},{n:"5/3",w:" "},{n:"1",w:"me "},{n:"5(4)",w:"down"}]},
+        {segments:[{n:"4",w:"He's faithful in every season, "},{n:"1/3",w:"so why "},{n:"6m7",w:"would He fail "},{n:"5(4)",w:"now"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"4",w:"Rain and wind "},{n:"5",w:"came, but my "},{n:"1/3",w:"house was "},{n:"6m",w:"built on "},{n:"5",w:"You"}]},
+        {segments:[{n:"4",w:"And I'm safe "},{n:"5",w:"with You, "},{n:"1/3",w:"I'm going "},{n:"6m",w:"to make it "},{n:"5",w:"through"}]}
+      ]},
+      {label:"Vamp",lines:[
+        {segments:[{n:"4",w:"Yeah I'm going to make it 'cause I'm "},{n:"5",w:"standing "},{n:"1/3",w:"strong on "},{n:"6m",w:"  "},{n:"5",w:"You"}]},
+        {segments:[{n:"4",w:"Yeah I'm going to make it 'cause my "},{n:"5",w:"house is "},{n:"1/3",w:"built on "},{n:"6m",w:"  "},{n:"5",w:"You"}]}
+      ]}
+    ]
+  },
+
+  // ── 29. Holy Forever G (Key G) ────────────────────────────────
+  29:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"A thousand generations "},{n:"4add2",w:"falling down in "},{n:"1",w:"worship"}]},
+        {segments:[{n:"6m7",w:"To sing   the song of "},{n:"5sus",w:"ages  "},{n:"4add2",w:"to the Lamb"}]},
+        {segments:[{n:"1",w:"And all who've gone before us and "},{n:"4add2",w:"all  who will be- "},{n:"1",w:"lieve"}]},
+        {segments:[{n:"6m7",w:"Will sing   the song of "},{n:"5(4)",w:"ages  "},{n:"4add2",w:"to the Lamb"}]}
+      ]},
+      {label:"Pre-Chorus",lines:[
+        {segments:[{n:"4add2",w:"(Jesus) Your name is the "},{n:"6m7",w:"highest"}]},
+        {segments:[{n:"5",w:"Your name is the greatest"}]},
+        {segments:[{n:"6m7",w:"Your name stands above them "},{n:"4add2",w:"all"}]},
+        {segments:[{n:"4add2",w:"All thrones and "},{n:"6m7",w:"dominions"}]},
+        {segments:[{n:"5",w:"All powers and positions"}]},
+        {segments:[{n:"6m7",w:"Your name stands above them "},{n:"2m7",w:"all"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4add2",w:"And the angels cry Ho- "},{n:"6m7",w:"  "},{n:"5",w:"ly"}]},
+        {segments:[{n:"1/3",w:"All creation cries Ho- "},{n:"6m7",w:"ly"}]},
+        {segments:[{n:"2m7",w:"You are lifted high Ho- "},{n:"5",w:"ly"}]},
+        {segments:[{n:"1",w:"Holy for- "},{n:"1sus",w:"  "},{n:"1",w:"ever"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"If you've been forgiven and you've been re- "},{n:"4add2",w:"deemed"}]},
+        {segments:[{n:"6m7",w:"Sing  the song for- "},{n:"5sus",w:"ever  "},{n:"4add2",w:"to the Lamb"}]},
+        {segments:[{n:"1",w:"If you walk in freedom and you bear His "},{n:"4add2",w:"name"}]},
+        {segments:[{n:"6m7",w:"Sing  the song for- "},{n:"5(4)",w:"ever  "},{n:"4add2",w:"to the Lamb"}]},
+        {segments:[{n:"6m7",w:"We'll sing the song for- "},{n:"5sus",w:"ever and a- "},{n:"4add2",w:"men"}]}
+      ]},
+      {label:"Chorus 2",lines:[
+        {segments:[{n:"1/3",w:"Hear Your peo- "},{n:"4add2",w:"ple sing Ho- "},{n:"6m7",w:"  "},{n:"5",w:"ly"}]},
+        {segments:[{n:"1/3",w:"To the King of "},{n:"6m7",w:"Kings,  Ho- "},{n:"5",w:"ly"}]},
+        {segments:[{n:"2m7",w:"You will always "},{n:"5",w:"be    Ho- ly"}]},
+        {segments:[{n:"1",w:"Holy for- "},{n:"1sus",w:"  "},{n:"1",w:"ever"}]}
+      ]}
+    ]
   }
 };
 
@@ -1104,18 +1378,103 @@ const DEFAULT_SONGS=[
      {label:"Chorus",numbers:[{n:"1"},{n:"5"},{n:"4"},{n:"5"},{n:"1"}]},
      {label:"Bridge",numbers:[{n:"1"},{n:"3m"},{n:"//"},{n:"6m"},{n:"2/4"},{n:"//"},{n:"1/5"},{n:"5"},{n:"//"},{n:"2m"},{n:"4"}]}
    ],
-   notes:"Verified from chart. Key A. Verse: D E/D pattern. Chorus: A E D E A. Bridge: A C#m F#m E/D A/E E Bm D — 'Day and night, night and day, let incense arise.' Soaking song — loop freely."}
+   notes:"Verified from chart. Key A. Verse: D E/D pattern. Chorus: A E D E A. Bridge: A C#m F#m E/D A/E E Bm D — 'Day and night, night and day, let incense arise.' Soaking song — loop freely."},
+
+  // ── 23. Names ──────────────────────────────────────────────────
+  {id:23,title:"Names",artist:"Elevation Worship / Maverick City Music",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["names","you are the medicine","everlasting father","prince of peace","wonderful counselor","emmanuel"],
+   verified:true,bpm:69,
+   sections:[
+     {label:"Intro",numbers:[{n:"1sus"},{n:"1"},{n:"5sus"},{n:"//"},  {n:"4/6"},{n:"6m"},{n:"//"},  {n:"4/1"}]},
+     {label:"Verse 1",numbers:[{n:"1sus"},{n:"1"},{n:"//"},  {n:"1sus"},{n:"1"},{n:"5sus"},{n:"//"},  {n:"5sus"},{n:"4/6"},{n:"6m"},{n:"//"},  {n:"6m"},{n:"5"},{n:"4/1"}]},
+     {label:"Verse 2",numbers:[{n:"1sus"},{n:"1"},{n:"//"},  {n:"1sus"},{n:"1"},{n:"5sus"},{n:"//"},  {n:"6m"},{n:"//"},  {n:"6m"},{n:"5"},{n:"4/1"}]},
+     {label:"Chorus",numbers:[{n:"1sus"},{n:"1"},{n:"5sus"},{n:"5(4)"},{n:"//"},  {n:"6m"},{n:"4/1"},{n:"//"},  {n:"1"},{n:"5sus"},{n:"//"},  {n:"6m"},{n:"4/1"},{n:"1"}]},
+     {label:"Verse 3",numbers:[{n:"1sus"},{n:"1"},{n:"//"},  {n:"1sus"},{n:"1"},{n:"5sus"},{n:"//"},  {n:"4/6"},{n:"6m"},{n:"//"},  {n:"6m"},{n:"5"},{n:"4(1)"}]},
+     {label:"Bridge",numbers:[{n:"1"},{n:"5sus"},{n:"6m7"},{n:"4/1"}]}
+   ],
+   notes:"Key D. Dsus vamp. Chorus: Everlasting Father, Prince of Peace / Emmanuel. Bridge: Your names say it all."},
+
+  // ── 24. Set Me Apart ───────────────────────────────────────────
+  {id:24,title:"Set Me Apart",artist:"Matt Tapley",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["set me apart","lord have your way","I want to do your will","vessel you can fill","make me holy"],
+   verified:true,bpm:68,
+   sections:[
+     {label:"Verse",numbers:[{n:"4"},{n:"5"},{n:"//"},  {n:"1"},{n:"1/3"},{n:"//"},  {n:"2m"},{n:"//"},  {n:"5"},{n:"1"}]},
+     {label:"Chorus",numbers:[{n:"4"},{n:"//"},  {n:"1/3"},{n:"//"},  {n:"2m"},{n:"//"},  {n:"5"},{n:"//"},  {n:"1"}]},
+     {label:"Bridge",numbers:[{n:"4sus"},{n:"4"},{n:"//"},  {n:"1/3"},{n:"//"},  {n:"2m"},{n:"5"},{n:"//"},  {n:"1"}]}
+   ],
+   notes:"Key G. Verse: C D / G G/B / Am / D G. Chorus: C / G/B / Am / D / G. Bridge: Csus C / G/B / Am D / G."},
+
+  // ── 25. There Is Only One ──────────────────────────────────────
+  {id:25,title:"There Is Only One",artist:"",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["there is only one","who takes away our sins","only one","king of kings","lamb who is seated on the throne"],
+   verified:true,bpm:null,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"//"},  {n:"6m"},{n:"//"},  {n:"4"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"2m"},{n:"6m"},{n:"5"},{n:"//"},  {n:"3/5"},{n:"4"},{n:"//"},  {n:"6m"},{n:"//"},  {n:"5"},{n:"//"},  {n:"3/5"},{n:"4"},{n:"//"},  {n:"6m"},{n:"5"}]},
+     {label:"Bridge",numbers:[{n:"3/5"},{n:"4"},{n:"//"},  {n:"3b/1"},{n:"1"}]}
+   ],
+   notes:"Key G. Verse: G / Em / C. Chorus: G Am Em D / B/D C / Em / D / B/D C / Em D. Bridge: B/D C / F#-G vamp. (3b = F# used as passing chord)"},
+
+  // ── 26. You Hold It All Together ───────────────────────────────
+  {id:26,title:"You Hold It All Together",artist:"Maverick City Music / UPPERROOM",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["you hold it all together","you come at the right time","goodness of the lord","your faithfulness remains","i believe that i will see"],
+   verified:true,bpm:73,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"4add2"},{n:"1"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"5(4)"},{n:"4add2"}]},
+     {label:"Pre-Chorus",numbers:[{n:"5(4)"},{n:"4add2"},{n:"1"},{n:"//"},  {n:"5(4)"},{n:"4add2"},{n:"1"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"4add2"},{n:"5(4)"},{n:"6m7"},{n:"//"},  {n:"1/3"},{n:"4add2"},{n:"5(4)"},{n:"//"},  {n:"1"},{n:"4add2"},{n:"5(4)"},{n:"6m7"},{n:"//"},  {n:"4add2"},{n:"5(4)"},{n:"1"}]},
+     {label:"Turnaround",numbers:[{n:"1"},{n:"4add2"},{n:"//"},  {n:"6m7"},{n:"5(4)"},{n:"4add2"}]},
+     {label:"Bridge",numbers:[{n:"1"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"1/3"},{n:"//"},  {n:"4add2"}]}
+   ],
+   notes:"Key D. G2=Gadd2. Verse: D G2 D / G2 Bm7 A(4) G2. Chorus: D G2 A(4) Bm7 / D/F# G2 A(4) / repeated / G2 A(4) D. Bridge: God of my present / God of my future / You hold it all together."},
+
+  // ── 27. Ancient of Days ────────────────────────────────────────
+  {id:27,title:"Ancient of Days",artist:"Gary Sadler / Jamie Harvill",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["ancient of days","blessing and honor","glory and power","every tongue in heaven and earth","your kingdom shall reign"],
+   verified:true,bpm:87,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"2m/1"},{n:"1"},{n:"2m/1"},{n:"1"},{n:"//"},  {n:"1"},{n:"5/3"},{n:"6m"},{n:"5/3"},{n:"//"},  {n:"6m7"},{n:"5/3"},{n:"1"}]},
+     {label:"Chorus",numbers:[{n:"4"},{n:"6m7"},{n:"5"},{n:"1/3"},{n:"//"},  {n:"4"},{n:"6m7"},{n:"5"},{n:"1/3"},{n:"3m7"},{n:"//"},  {n:"4"},{n:"6m7"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"4"},{n:"6m7"},{n:"5"},{n:"//"},  {n:"4/5"},{n:"1"}]},
+     {label:"Bridge",numbers:[{n:"1"},{n:"//"},  {n:"4/1"},{n:"1/4"},{n:"2m/4"},{n:"4/1"},{n:"1b5"},{n:"//"},  {n:"1"},{n:"//"},  {n:"4/1"},{n:"1/4"},{n:"2m/4"},{n:"4/1"},{n:"1"},{n:"1/3"}]}
+   ],
+   notes:"Key D. Verse: D Em/D D Em/D D / D A/C# Bm A/C# / Bm7 A/C# D. Chorus: G Em7 A D/F# / G Em7 A D/F# F#m7 / G Em7 A / D/F# G Em7 A / G/A D. Bridge: D / C/D G/D Am/D C/D D5 / D / C/D G/D Am/D C/D D D/F#"},
+
+  // ── 28. Firm Foundation (He Won't) ────────────────────────────
+  {id:28,title:"Firm Foundation (He Won't)",artist:"Cody Carnes / Chandler Moore",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["firm foundation","he wont","christ is my firm foundation","the rock on which I stand","faithful through generations"],
+   verified:true,bpm:150,
+   sections:[
+     {label:"Intro",numbers:[{n:"1"},{n:"1sus"}]},
+     {label:"Verse",numbers:[{n:"1sus"},{n:"1"},{n:"6m7"},{n:"5(4)"},{n:"//"},  {n:"4"},{n:"1/3"},{n:"6m7"},{n:"5(4)"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"1sus"},{n:"//"},  {n:"6m"},{n:"5"},{n:"4maj7"},{n:"//"},  {n:"6m"},{n:"5"},{n:"1"},{n:"1/3"},{n:"4maj7"}]},
+     {label:"Bridge",numbers:[{n:"4"},{n:"5"},{n:"1/3"},{n:"6m"},{n:"5"}]},
+     {label:"Vamp",numbers:[{n:"4"},{n:"5"},{n:"1/3"},{n:"6m"},{n:"5"}]}
+   ],
+   notes:"Key D. 6/8 feel at 150 (eighth note). Verse: Dsus D Bm7 A(4) / G D/F# Bm7 A(4). Chorus: N.C. D Dsus / Bm A Gmaj7 / Bm A D D/F# Gmaj7. Bridge/Vamp: G A D/F# Bm A (Rain and wind came but my house was built on You)."},
+
+  // ── 29. Holy Forever (G chart) ─────────────────────────────────
+  {id:29,title:"Holy Forever (G)",artist:"Chris Tomlin / Phil Wickham",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["holy forever","and the angels cry holy","all creation cries holy","you are lifted high","a thousand generations","holy forever"],
+   verified:true,bpm:72,
+   sections:[
+     {label:"Intro",numbers:[{n:"4"},{n:"6m"},{n:"5sus"},{n:"//"},  {n:"1/3"},{n:"//"},  {n:"6m"},{n:"5sus"}]},
+     {label:"Verse",numbers:[{n:"1"},{n:"4add2"},{n:"1"},{n:"//"},  {n:"6m7"},{n:"5sus"},{n:"4add2"},{n:"//"},  {n:"1"},{n:"4add2"},{n:"1"},{n:"//"},  {n:"6m7"},{n:"5(4)"},{n:"4add2"}]},
+     {label:"Pre-Chorus",numbers:[{n:"4add2"},{n:"6m7"},{n:"//"},  {n:"5"},{n:"//"},  {n:"6m7"},{n:"4add2"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"//"},  {n:"5"},{n:"//"},  {n:"6m7"},{n:"2m7"}]},
+     {label:"Chorus",numbers:[{n:"4add2"},{n:"6m7"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"6m7"},{n:"//"},  {n:"2m7"},{n:"5"},{n:"//"},  {n:"1"},{n:"1sus"},{n:"1"}]}
+   ],
+   notes:"Key G. C2=Cadd2. Verse: G C2 G / Em7 Dsus C2 / G C2 G / Em7 D(4) C2. Pre-Chorus: C2 Em7 / D / Em7 C2 / C2 Em7 / D / Em7 Am7. Chorus: C2 Em7 D / G/B Em7 / Am7 D / G Gsus G. Note: song ID 20 is key C version."}
 ];
 
 // Default favourites — song IDs starred for every new user out of the box.
 // Changing this list only affects new installs or after a version reset.
 // Each user can star/unstar freely on their own device without affecting others.
-const DEFAULT_FAVOURITES=new Set([10,11,19,14,15,4,16,17,18,20,21,22]); // Agnus Dei, Give Me Jesus, Here I Am To Worship, How Great Is Our God, Show Me Your Face Lord, What a Beautiful Name, Worthy (Elevation), Worthy Is The Lamb, Worthy of It All, Holy Forever, I Exalt Thee, Yeshua
+const DEFAULT_FAVOURITES=new Set([10,11,19,14,15,4,16,17,18,20,21,22,23,24,25,26,27,28,29]); // Agnus Dei, Give Me Jesus, Here I Am To Worship, How Great Is Our God, Show Me Your Face Lord, What a Beautiful Name, Worthy (Elevation), Worthy Is The Lamb, Worthy of It All, Holy Forever, I Exalt Thee, Yeshua
 
 // Reset stale old library so new defaults load fresh — v3 forces refresh for corrected chords
 (function(){
   const ver=localStorage.getItem('worship-ver');
-  if(ver!=='14'){localStorage.removeItem('worship-songs');localStorage.removeItem('worship-order');localStorage.removeItem('worship-favs-init');localStorage.setItem('worship-ver','14');}
+  if(ver!=='15'){localStorage.removeItem('worship-songs');localStorage.removeItem('worship-order');localStorage.removeItem('worship-favs-init');localStorage.setItem('worship-ver','15');}
 
 })();
 
@@ -1146,6 +1505,7 @@ let devMode=false; // always off on load
 let showingLyrics=false;
 if(!localStorage.getItem('oncue-auto-lyrics'))localStorage.setItem('oncue-auto-lyrics','0');
 let settingsAutoLyrics=localStorage.getItem('oncue-auto-lyrics')==='1';
+let settingsChartLight=localStorage.getItem('oncue-chart-light')==='1';
 let settingsPushSongs=localStorage.getItem('oncue-push-songs')!=='0'; // default ON
 let settingsLyricsFirst=localStorage.getItem('oncue-lyrics-first')==='1';
 if(!localStorage.getItem('oncue-show-verses'))localStorage.setItem('oncue-show-verses','0');
@@ -1409,22 +1769,14 @@ function renderChart(song,key){
   }
 
   el.innerHTML=`<div class="chart-panel">
-    <div class="chart-top">
-      <div style="display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;flex:1;min-width:0">
-        <div>
-          <div style="display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden">
-            <div class="chart-title">${song.title}${song.verified?'<span class="verified-badge" style="vertical-align:middle;margin-left:5px"><svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="#27500A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> ✓</span>':''}</div>
-            ${song.bpm?`<span class="bpm-badge">${song.bpm} bpm</span>`:''}
-          </div>
-          <div class="chart-meta">${song.artist||''}</div>
-        </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;gap:8px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0">
+        <div style="font-size:16px;font-weight:600;color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:1;min-width:0">${song.title}${song.bpm?` <span style="font-size:12px;font-weight:400;color:var(--txt2)">· ${song.bpm} bpm</span>`:''}</div>
       </div>
-      <div class="chart-top-right">
-        <div class="chart-btn-row">
-          <button class="${lyricsBtnClass}" onclick="toggleLyrics()">${lyricsBtnLabel}</button>
-          <button class="close-btn" onclick="closeChart()">&#8592; Library</button>
-        </div>
-        <div class="key-selector"><span style="font-size:13px;color:var(--txt2);">Key:</span>${kb}</div>
+      <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+        <div class="key-selector" style="flex-shrink:0"><span style="font-size:12px;color:var(--txt2);">Key:</span>${kb}</div>
+        <button class="${lyricsBtnClass}" onclick="toggleLyrics()" style="font-size:13px;padding:5px 12px">${lyricsBtnLabel}</button>
+        <button class="close-btn" onclick="closeChart()" style="font-size:13px;padding:5px 12px">&#8592; Library</button>
       </div>
     </div>
     ${showNumbers?sh:''}
@@ -1433,6 +1785,7 @@ function renderChart(song,key){
     ${song.notes&&!showNumbers?`<div class="notes-area"><strong style="font-weight:500;">Notes:</strong> ${song.notes}</div>`:''}
   </div>`;
   el.style.display='block';
+  applyChartTheme();
   document.getElementById('song-grid').style.display='none';
   document.getElementById('bottom-bar').style.display='none';
   document.getElementById('sync-bar').style.display='none';
@@ -1450,6 +1803,7 @@ function renderChart(song,key){
 function toggleLyrics(){
   showingLyrics=!showingLyrics;
   renderChart(selectedSong,selectedKey||effectiveKey(selectedSong));
+  // top bar button gets re-applied in renderChart
 }
 
 function closeChart(){
@@ -1459,6 +1813,7 @@ function closeChart(){
   document.getElementById('bottom-bar').style.display='flex';
   document.getElementById('sync-bar').style.display='flex';
   document.getElementById('edit-mode-btn').style.display='';
+  applyRole(syncRole);
   document.getElementById('top-edit-song-btn').style.display='none';
   document.getElementById('search-row-wrap').style.display='';
   document.getElementById('status-bar').style.display='';
@@ -1954,6 +2309,17 @@ function initSettings(){
       localStorage.setItem('oncue-push-songs',settingsPushSongs?'1':'0');
     });
   }
+  const chartLightEl=document.getElementById('setting-chart-light');
+  if(chartLightEl){
+    chartLightEl.checked=settingsChartLight;
+    chartLightEl.addEventListener('change',()=>{
+      settingsChartLight=chartLightEl.checked;
+      localStorage.setItem('oncue-chart-light',settingsChartLight?'1':'0');
+      applyChartTheme();
+      if(selectedSong) renderChart(selectedSong,selectedKey||effectiveKey(selectedSong));
+    });
+  }
+  applyChartTheme();
 
   autoLyricsEl.addEventListener('change',()=>{
     settingsAutoLyrics=autoLyricsEl.checked;
@@ -2653,6 +3019,11 @@ function goHome(){
 function splashGoToSetlistManager(){
   document.getElementById('splash-screen').classList.remove('open');
   openSetlistManager();
+}
+
+function applyChartTheme(){
+  const cv=document.getElementById('chart-view');
+  if(cv) cv.classList.toggle('chart-light',settingsChartLight);
 }
 
 function applyDevMode(){
