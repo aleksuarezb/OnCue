@@ -1,7 +1,7 @@
-// OnCue Service Worker — v1776293885
+// OnCue Service Worker — v1778192271
 // Forces fresh load on every deploy by using a unique cache name
 
-const CACHE_NAME = 'oncue-v1776293885';
+const CACHE_NAME = 'oncue-v1778192271';
 const BASE_PATH = '/OnCue';
 
 self.addEventListener('install', event => {

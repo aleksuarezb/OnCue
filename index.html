@@ -231,6 +231,8 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .set-tile-name{font-size:10px;font-weight:500;color:#3B1FA8;text-align:center;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-break:break-word;hyphens:auto}
 .set-tile-remove{position:absolute;top:2px;right:3px;font-size:10px;color:#9CA3AF;cursor:pointer;line-height:1;padding:1px 2px}
 .set-tile-remove:hover{color:#E24B4A}
+.set-tile-key{font-size:9px;color:#7C3AED;font-weight:600;margin-top:2px;cursor:pointer;border:.5px solid #C4B5FD;border-radius:3px;padding:0 3px;background:#EDE9FE}
+.set-tile.active-song .set-tile-key{color:#fff;background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.4)}
 
 /* in set-mode, song tiles get a + overlay */
 .song-tile.set-mode-add{border-color:#C4B5FD}
@@ -516,6 +518,7 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
     <div class="settings-group">
       <div class="settings-group-title">Developer</div>
       <div style="font-size:12px;color:var(--txt2);margin-bottom:8px">&#9999; To adjust chord positions above syllables: enable Developer Mode, open a song, tap <strong>♩ Lyrics</strong>, then tap <strong>&#9999; Adjust spacing</strong>.</div>
+      <button onclick="clearAllLyricOverrides()" style="margin-bottom:10px;padding:6px 14px;font-size:13px;border:.5px solid #c8960a;border-radius:var(--r);background:#FFF3CC;color:#7a5c00;cursor:pointer;width:100%">&#128465; Clear all lyric spacing overrides</button>
       <div class="setting-row">
         <div>
           <div class="setting-label">Developer Mode</div>
@@ -1205,6 +1208,325 @@ const SONG_LYRICS={
         {segments:[{n:"1",w:"Holy for- "},{n:"1sus",w:"  "},{n:"1",w:"ever"}]}
       ]}
     ]
+  },
+
+  // ── 30. Rest On Us (Key A) ─────────────────────────────────────
+  30:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"As the Spirit was moving over the water"}]},
+        {segments:[{n:"4",w:"Spirit come move over us"}]},
+        {segments:[{n:"6m",w:"Come rest on us, come "},{n:"4",w:"rest on us"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"Come down Spirit when You "},{n:"1/3",w:"move"}]},
+        {segments:[{n:"4",w:"You make my heart pound when You fill the "},{n:"5",w:"room"}]},
+        {segments:[{n:"6m",w:"You're here and I know You are "},{n:"1",w:"moving"}]},
+        {segments:[{n:"4",w:"I'm here and I know You will fill me"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"Fire and wind come and do it again"}]},
+        {segments:[{n:"4",w:"Open up the gates let Heaven on in"}]},
+        {segments:[{n:"6m",w:"Come rest on us, come "},{n:"4",w:"rest on us"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"1",w:"Holy Spirit"}]},
+        {segments:[{n:"2m7",w:"Come rest on us"}]},
+        {segments:[{n:"6m",w:"You're all we want, "},{n:"4",w:"You're all we want"}]}
+      ]}
+    ]
+  },
+
+  // ── 31. At Your Name (Key G) ───────────────────────────────────
+  31:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"At Your name the mountains shake and "},{n:"4",w:"crumble"}]},
+        {segments:[{n:"1",w:"At Your name the oceans roar and "},{n:"4",w:"tumble"}]},
+        {segments:[{n:"5",w:"At Your name angels will "},{n:"6m",w:"bow  the earth will re- "},{n:"4",w:"joice"}]},
+        {segments:[{n:"5",w:"Your people cry out"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1sus",w:"Lord   of all the earth we "},{n:"1",w:"shout Your name shout Your name"}]},
+        {segments:[{n:"6m",w:"Filling up the skies with endless praise endless praise"}]},
+        {segments:[{n:"5",w:"Yahweh Yahweh we "},{n:"4",w:"love to shout Your name oh "},{n:"1",w:"Lord"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"At Your name the morning breaks in "},{n:"4",w:"glory"}]},
+        {segments:[{n:"1",w:"At Your name creation sings Your "},{n:"4",w:"story"}]},
+        {segments:[{n:"5",w:"At Your name angels will "},{n:"6m",w:"bow  the earth will re- "},{n:"4",w:"joice"}]},
+        {segments:[{n:"5",w:"Your people cry out"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"5",w:"There is no one like our God"}]},
+        {segments:[{n:"6m",w:"We will praise You "},{n:"4",w:"praise You"}]},
+        {segments:[{n:"5",w:"There's no one like our God"}]},
+        {segments:[{n:"1",w:"We will sing we will sing"}]},
+        {segments:[{n:"4",w:"We will "},{n:"5",w:"sing"}]}
+      ]}
+    ]
+  },
+
+  // ── 34. Glory Honor Power (Key G) ─────────────────────────────
+  34:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"Most worthy worthy of praise"}]},
+        {segments:[{n:"6m7",w:"Exalted above all things"}]},
+        {segments:[{n:"4add2",w:"My God You are my God"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"Your splendor and majesty"}]},
+        {segments:[{n:"6m7",w:"Your wonder fills everything"}]},
+        {segments:[{n:"4add2",w:"My God You are "},{n:"2m7(4)",w:"my God"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"Holy is the Lord holy is the Lord Almighty"}]},
+        {segments:[{n:"6m7",w:"Seated on the throne seated on the throne of Glory"}]},
+        {segments:[{n:"4add2",w:"High and lifted up Your presence fills the temple"}]},
+        {segments:[{n:"5(4)",w:"When we worship You oh we worship You"}]}
+      ]},
+      {label:"Verse 3",lines:[
+        {segments:[{n:"1",w:"Creation points to the King"}]},
+        {segments:[{n:"6m7",w:"The heavens can't help but sing"}]},
+        {segments:[{n:"4add2",w:"To You to You "},{n:"2m7(4)",w:"our God"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"4add2",w:"Hallelujah to the "},{n:"5(4)",w:"One who came and made a "},{n:"6m7",w:"way"}]},
+        {segments:[{n:"4add2",w:"Hallelujah to the "},{n:"5(4)",w:"One who died and rose a- "},{n:"6m7",w:"gain"}]},
+        {segments:[{n:"4add2",w:"Hallelujah to the name a- "},{n:"5(4)",w:"bove all "},{n:"6m7",w:"names"}]},
+        {segments:[{n:"4add2",w:"Glory "},{n:"1",w:"honor "},{n:"5(4)",w:"power for- "},{n:"6m7",w:"ever "},{n:"5(4)",w:""}]}
+      ]}
+    ]
+  },
+
+  // ── 35. Living Hope (Key G) ────────────────────────────────────
+  35:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"How great the chasm that lay be- "},{n:"5sus",w:"tween us"}]},
+        {segments:[{n:"4add2",w:"How high the "},{n:"6m7",w:"mountain  "},{n:"5sus",w:"I could not climb"}]},
+        {segments:[{n:"1",w:"In desper- ation I turned to "},{n:"5sus",w:"heaven"}]},
+        {segments:[{n:"4add2",w:"And spoke Your name in- "},{n:"5sus",w:"to   "},{n:"1",w:"the night"}]},
+        {segments:[{n:"4add2",w:"Then through the darkness Your loving- "},{n:"1",w:"kindness"}]},
+        {segments:[{n:"6m7",w:"Tore through the shadows of my "},{n:"5(4)",w:"soul"}]},
+        {segments:[{n:"1",w:"The work is finished the end is "},{n:"5sus",w:"written"}]},
+        {segments:[{n:"4",w:"Jesus Christ, "},{n:"5sus",w:"my "},{n:"1",w:"living  "},{n:"4add2",w:"hope"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"Who could im- agine so great a "},{n:"5sus",w:"mercy?"}]},
+        {segments:[{n:"4add2",w:"What heart could "},{n:"6m7",w:"fathom  "},{n:"5sus",w:"such boundless grace?"}]},
+        {segments:[{n:"1",w:"The God of ages stepped down from "},{n:"5sus",w:"glory"}]},
+        {segments:[{n:"4",w:"To wear my sin and "},{n:"5sus",w:"bear  "},{n:"1",w:"my shame"}]},
+        {segments:[{n:"4add2",w:"The cross has spoken, I am for- "},{n:"1",w:"given"}]},
+        {segments:[{n:"6m7",w:"The King of kings calls me His "},{n:"5(4)",w:"own"}]},
+        {segments:[{n:"1",w:"Beautiful Savior, I'm Yours for- "},{n:"5sus",w:"ever"}]},
+        {segments:[{n:"4",w:"Jesus Christ, "},{n:"5sus",w:"my "},{n:"1",w:"living hope"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4add2",w:"Halle- lujah, praise the "},{n:"1",w:"One who set me "},{n:"5",w:"free!"}]},
+        {segments:[{n:"6m7",w:"Halle- lu- jah, death has lost its grip on "},{n:"",w:"me!"}]},
+        {segments:[{n:"4add2",w:"You have broken every "},{n:"1",w:"chain, there's sal- "},{n:"5",w:"vation in Your name"}]},
+        {segments:[{n:"6m7",w:"Jesus Christ, my "},{n:"1/5",w:"liv- "},{n:"4add2",w:"ing  "},{n:"5sus",w:"hope"}]}
+      ]},
+      {label:"Verse 3",lines:[
+        {segments:[{n:"1",w:"Then came the morning that sealed the "},{n:"5sus",w:"promise"}]},
+        {segments:[{n:"4add2",w:"Your buried "},{n:"6m7",w:"body  "},{n:"5sus",w:"began to breathe"}]},
+        {segments:[{n:"1",w:"Out of the silence, the Roaring "},{n:"5sus",w:"Lion"}]},
+        {segments:[{n:"4add2",w:"Declared the grave has no "},{n:"5sus",w:"claim  "},{n:"1",w:"on me"}]}
+      ]}
+    ]
+  },
+
+  // ── 36. Christ And Christ Crucified (Key G) ───────────────────
+  36:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"The wages of my sin was "},{n:"",w:"  "},{n:"1",w:"death"}]},
+        {segments:[{n:"1",w:"You knew I couldn't pay the debt"}]},
+        {segments:[{n:"6m7",w:"You paid it with your final "},{n:"4add2",w:"breath"}]},
+        {segments:[{n:"1/3",w:"Halle- "},{n:"4add2",w:"lujah  halle- "},{n:"1/5",w:"lu- "},{n:"5sus",w:"jah"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"You took the wrath that I de- "},{n:"",w:"  "},{n:"1",w:"served"}]},
+        {segments:[{n:"1",w:"Your holy blood broke ev- 'ry curse"}]},
+        {segments:[{n:"6m7",w:"Your mercy had the final "},{n:"4add2",w:"word"}]},
+        {segments:[{n:"1/3",w:"Halle- "},{n:"4add2",w:"lujah  halle- "},{n:"1/5",w:"lu- "},{n:"5sus",w:"jah"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4add2",w:"We sing Christ and Christ crucified"}]},
+        {segments:[{n:"1",w:"In You we're raised from death to "},{n:"1/3",w:"life"}]},
+        {segments:[{n:"4add2",w:"We sing Christ and Christ "},{n:"2m7",w:"crucified"}]},
+        {segments:[{n:"6m7",w:"Halle- lujah halle- "},{n:"1/5",w:"lu-  "},{n:"5sus",w:"jah"}]}
+      ]},
+      {label:"Verse 3",lines:[
+        {segments:[{n:"1",w:"No sin is bigger than Your "},{n:"4add2",w:"blood"}]},
+        {segments:[{n:"1",w:"No shame is stronger than Your "},{n:"4add2",w:"love"}]},
+        {segments:[{n:"6m7",w:"You said it's finished it is "},{n:"4add2",w:"done"}]},
+        {segments:[{n:"1/3",w:"Halle- "},{n:"4add2",w:"lujah  halle- "},{n:"1/5",w:"lu- "},{n:"5sus",w:"jah"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"1",w:"Death couldn't hold You "},{n:"1/3",w:"down"}]},
+        {segments:[{n:"4add2",w:"Hell couldn't steal Your "},{n:"5(4)",w:"crown"}]},
+        {segments:[{n:"6m7",w:"There's resurrection "},{n:"1/3",w:"power in Your Name"}]},
+        {segments:[{n:"4add2",w:"Let all the earth cry "},{n:"5(4)",w:"out"}]},
+        {segments:[{n:"6m7",w:"Lift up a holy "},{n:"1/3",w:"sound"}]},
+        {segments:[{n:"4add2",w:"Give all the glory "},{n:"2m7(4)",w:"now to Jesus' Name"}]}
+      ]}
+    ]
+  },
+
+  // ── 37. The Joy (Key G) ────────────────────────────────────────
+  37:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"This is the day You made"}]},
+        {segments:[{n:"6m",w:"So I'll re- joice and be glad, re- joice and be glad in "},{n:"4",w:"it "},{n:"1",w:""}]},
+        {segments:[{n:"1",w:"This is where I believe"}]},
+        {segments:[{n:"6m",w:"That You are more than enough, more than enough for "},{n:"4",w:"me "},{n:"1",w:""}]}
+      ]},
+      {label:"Pre-Chorus",lines:[
+        {segments:[{n:"4",w:"You are faithful to Your promise, You are "},{n:"5",w:"strong when I am "},{n:"1",w:"weak"}]},
+        {segments:[{n:"4",w:"When I'm standing in Your presence, I have "},{n:"5",w:"ev'rything I need"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"The joy of the Lord, the "},{n:"2m",w:"joy  of the Lord is my "},{n:"4",w:"strength"}]},
+        {segments:[{n:"1",w:"The joy of the Lord, the "},{n:"2m",w:"joy  of the Lord is my "},{n:"4",w:"strength"}]},
+        {segments:[{n:"6m",w:"O my soul, "},{n:"5",w:"bless His Name"}]},
+        {segments:[{n:"1/3",w:"All   that is with- in "},{n:"2m",w:"me say"}]},
+        {segments:[{n:"1",w:"The joy of the Lord, the "},{n:"2m",w:"joy  of the Lord is my "},{n:"1",w:"strength"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"Jesus, come what may"}]},
+        {segments:[{n:"6m",w:"You are worthy of all, worthy of all my "},{n:"4",w:"praise "},{n:"1",w:""}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"5",w:"Let it rise up like a "},{n:"4",w:"river, "},{n:"1",w:"flowing, Holy "},{n:"",w:"Spirit"}]},
+        {segments:[{n:"5",w:"Let it pour out with no "},{n:"4",w:"limit, "},{n:"1",w:"flowing, Holy "},{n:"",w:"Spirit"}]}
+      ]},
+      {label:"Tag",lines:[
+        {segments:[{n:"1",w:"I've got the "},{n:"2m",w:"joy, I've got the "},{n:"4",w:"joy, I've got the joy"}]},
+        {segments:[{n:"1",w:"It's the joy of the Lord, it's the joy of the Lord"}]}
+      ]}
+    ]
+  },
+
+  // ── 38. Holy Forever D (Key D) ────────────────────────────────
+  38:{
+    sections:[
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1",w:"A thousand generations "},{n:"4add2",w:"falling down in "},{n:"1",w:"worship"}]},
+        {segments:[{n:"6m7",w:"To sing   the song of "},{n:"5sus",w:"ages  "},{n:"4add2",w:"to the Lamb"}]},
+        {segments:[{n:"1",w:"And all who've gone before us and "},{n:"4add2",w:"all  who will be- "},{n:"1",w:"lieve"}]},
+        {segments:[{n:"6m7",w:"Will sing   the song of "},{n:"5(4)",w:"ages  "},{n:"4add2",w:"to the Lamb"}]}
+      ]},
+      {label:"Pre-Chorus",lines:[
+        {segments:[{n:"4add2",w:"(Jesus) Your name is the "},{n:"6m7",w:"highest"}]},
+        {segments:[{n:"5",w:"Your name is the greatest"}]},
+        {segments:[{n:"6m7",w:"Your name stands above them "},{n:"4add2",w:"all"}]},
+        {segments:[{n:"4add2",w:"All thrones and "},{n:"6m7",w:"dominions"}]},
+        {segments:[{n:"5",w:"All powers and positions"}]},
+        {segments:[{n:"6m7",w:"Your name stands above them "},{n:"2m7",w:"all"}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4add2",w:"And the angels cry Ho- "},{n:"6m7",w:"  "},{n:"5",w:"ly"}]},
+        {segments:[{n:"1/3",w:"All creation cries Ho- "},{n:"6m7",w:"ly"}]},
+        {segments:[{n:"2m7",w:"You are lifted high Ho- "},{n:"5",w:"ly"}]},
+        {segments:[{n:"1",w:"Holy for- "},{n:"1sus",w:"  "},{n:"1",w:"ever"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1",w:"If you've been forgiven and you've been re- "},{n:"4add2",w:"deemed"}]},
+        {segments:[{n:"6m7",w:"Sing  the song for- "},{n:"5sus",w:"ever  "},{n:"4add2",w:"to the Lamb"}]},
+        {segments:[{n:"1",w:"If you walk in freedom and you bear His "},{n:"4add2",w:"name"}]},
+        {segments:[{n:"6m7",w:"Sing  the song for- "},{n:"5(4)",w:"ever  "},{n:"4add2",w:"to the Lamb"}]},
+        {segments:[{n:"6m7",w:"We'll sing the song for- "},{n:"5sus",w:"ever and a- "},{n:"4add2",w:"men"}]}
+      ]},
+      {label:"Chorus 2",lines:[
+        {segments:[{n:"1/3",w:"Hear Your peo- "},{n:"4add2",w:"ple sing Ho- "},{n:"6m7",w:"  "},{n:"5",w:"ly"}]},
+        {segments:[{n:"1/3",w:"To the King of "},{n:"6m7",w:"Kings,  Ho- "},{n:"5",w:"ly"}]},
+        {segments:[{n:"2m7",w:"You will always "},{n:"5",w:"be    Ho- ly"}]},
+        {segments:[{n:"1",w:"Holy for- "},{n:"1sus",w:"  "},{n:"1",w:"ever"}]}
+      ]}
+    ]
+  },
+
+  // ── 39. I Want Jesus (Key D) ───────────────────────────────────
+  39:{
+    sections:[
+      {label:"Chorus",lines:[
+        {segments:[{n:"1",w:"Oh "},{n:"6m7",w:"I    "},{n:"5",w:"want Jesus"}]},
+        {segments:[{n:"1",w:"Oh "},{n:"6m7",w:"I    "},{n:"5",w:"want    Him"}]},
+        {segments:[{n:"1",w:"Oh "},{n:"6m7",w:"on-  "},{n:"5",w:"ly Jesus"}]},
+        {segments:[{n:"1/3",w:"Take "},{n:"4add2",w:"this world and "},{n:"1/4",w:"give "},{n:"5",w:"me "},{n:"1",w:"Him"}]}
+      ]},
+      {label:"Verse 1",lines:[
+        {segments:[{n:"5/3",w:"No   "},{n:"6m7",w:"more mixture give me the "},{n:"5",w:"God of "},{n:"4add2",w:"scripture"}]},
+        {segments:[{n:"1/3",w:"No more idols or lesser "},{n:"5sus",w:"loves"}]},
+        {segments:[{n:"1/3",w:"No substi- "},{n:"4add2",w:"tute will ever "},{n:"5",w:"do  "},{n:"6m7",w:""}]},
+        {segments:[{n:"5/3",w:"There's nothing "},{n:"1",w:"more I'll ever "},{n:"6m7",w:"pur- "},{n:"5sus",w:"sue"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"5/3",w:"I    "},{n:"6m7",w:"sur- render until my heart "},{n:"5",w:"grows "},{n:"4add2",w:"tender"}]},
+        {segments:[{n:"1/3",w:"Here be my treasure my greatest "},{n:"5sus",w:"call"}]},
+        {segments:[{n:"1/3",w:"No substi- "},{n:"4add2",w:"tute will ever "},{n:"5",w:"do  "},{n:"6m7",w:""}]},
+        {segments:[{n:"5/3",w:"There's nothing "},{n:"1",w:"more I'll ever "},{n:"6m7",w:"pur- "},{n:"5sus",w:"sue"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"1",w:"Isn't He e- "},{n:"1sus",w:"nough, isn't He e- nough"}]},
+        {segments:[{n:"",w:"Jesus is all that I'll need"}]},
+        {segments:[{n:"1",w:"Isn't He e- "},{n:"1sus",w:"nough, isn't He e- nough"}]},
+        {segments:[{n:"1/2",w:"Jesus my "},{n:"6m7",w:"King of kings You satis- "},{n:"4add2",w:"fy me "},{n:"5",w:""}]}
+      ]}
+    ]
+  },
+
+  // ── 40. Come And Let Your Presence (Key D) ────────────────────
+  40:{
+    sections:[
+      {label:"Chorus",lines:[
+        {segments:[{n:"4",w:"For "},{n:"6m",w:"You"}]},
+        {segments:[{n:"5",w:"Are the One we want to meet"}]},
+        {segments:[{n:"4",w:"Jesus shine "},{n:"6m",w:"through"}]},
+        {segments:[{n:"5",w:"All the praises that we sing, we sing"}]}
+      ]},
+      {label:"Verse 1",lines:[
+        {segments:[{n:"1b5",w:"So come and let Your presence fill our praise, fill our praise"}]},
+        {segments:[{n:"1b5",w:"Come and let Your presence fill this place"}]},
+        {segments:[{n:"1b5",w:"So come and let Your presence fill our praise, fill our praise"}]},
+        {segments:[{n:"1b5",w:"Come and let Your presence fill this place"}]}
+      ]},
+      {label:"Verse 2",lines:[
+        {segments:[{n:"1b5",w:"We have come to give You highest praise, highest praise"}]},
+        {segments:[{n:"1b5",w:"We have come to love You in this place"}]},
+        {segments:[{n:"1b5",w:"We have come to give You highest praise, highest praise"}]},
+        {segments:[{n:"1b5",w:"We have come to love You in this place"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"6m",w:"It's all for "},{n:"4",w:"You"}]},
+        {segments:[{n:"6m",w:"Here we are, here we "},{n:"5",w:"are"}]}
+      ]}
+    ]
+  },
+
+  // ── 41. All Praise (Key G capo 2) ─────────────────────────────
+  41:{
+    sections:[
+      {label:"Verse",lines:[
+        {segments:[{n:"49",w:"All  "},{n:"4add9",w:"praise, be un- "},{n:"49",w:"to   "},{n:"1/3",w:"Your "},{n:"5sus4",w:"name  "},{n:"6m7",w:""}]},
+        {segments:[{n:"49",w:"All  "},{n:"4add9",w:"praise be un- "},{n:"49",w:"to   "},{n:"1/3",w:"my   "},{n:"5sus4",w:"king  "},{n:"6m7",w:""}]},
+        {segments:[{n:"49",w:"All  "},{n:"4add9",w:"praise be un- "},{n:"49",w:"to   "},{n:"1/3",w:"Your "},{n:"5sus4",w:"name, "},{n:"6m7",w:"all "},{n:"4add9",w:"praise "},{n:"5sus",w:""}]}
+      ]},
+      {label:"Chorus",lines:[
+        {segments:[{n:"4add9",w:"You're the alpha and omega, "},{n:"5sus4",w:"beginning and the end"}]},
+        {segments:[{n:"4add9",w:"You have canceled death forever, "},{n:"5sus4",w:"as the risen son of man"}]},
+        {segments:[{n:"4add9",w:"You're the alpha and omega, "},{n:"5/7",w:"beginning and the end"}]},
+        {segments:[{n:"4add9",w:"So all "},{n:"5sus4",w:"praise, all praise"}]}
+      ]},
+      {label:"Bridge",lines:[
+        {segments:[{n:"4add9",w:"To "},{n:"5sus4",w:"Jesus"}]},
+        {segments:[{n:"6m7",w:"To "},{n:"5/7",w:"Jesus"}]}
+      ]}
+    ]
   }
 };
 
@@ -1463,22 +1785,172 @@ const DEFAULT_SONGS=[
      {label:"Pre-Chorus",numbers:[{n:"4add2"},{n:"6m7"},{n:"//"},  {n:"5"},{n:"//"},  {n:"6m7"},{n:"4add2"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"//"},  {n:"5"},{n:"//"},  {n:"6m7"},{n:"2m7"}]},
      {label:"Chorus",numbers:[{n:"4add2"},{n:"6m7"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"6m7"},{n:"//"},  {n:"2m7"},{n:"5"},{n:"//"},  {n:"1"},{n:"1sus"},{n:"1"}]}
    ],
-   notes:"Key G. C2=Cadd2. Verse: G C2 G / Em7 Dsus C2 / G C2 G / Em7 D(4) C2. Pre-Chorus: C2 Em7 / D / Em7 C2 / C2 Em7 / D / Em7 Am7. Chorus: C2 Em7 D / G/B Em7 / Am7 D / G Gsus G. Note: song ID 20 is key C version."}
+   notes:"Key G. Holy Forever (G chart)."},
+
+  // ── 41. All Praise (Capo 2, Key G) ────────────────────────────
+  {id:41,title:"All Praise",artist:"Levi Clattenburg / Matt Tapley",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["all praise","all praise be unto your name","alpha and omega","beginning and the end","you have canceled death forever","to jesus"],
+   verified:true,bpm:67,
+   sections:[
+     {label:"Verse",numbers:[{n:"49"},{n:"4add9"},{n:"49"},{n:"1/3"},{n:"5sus4"},{n:"6m7"},{n:"//"},  {n:"49"},{n:"4add9"},{n:"49"},{n:"1/3"},{n:"5sus4"},{n:"6m7"},{n:"//"},  {n:"49"},{n:"4add9"},{n:"49"},{n:"1/3"},{n:"5sus4"},{n:"6m7"},{n:"4add9"},{n:"5sus"}]},
+     {label:"Chorus",numbers:[{n:"4add9"},{n:"5sus4"},{n:"//"},  {n:"4add9"},{n:"5sus4"},{n:"//"},  {n:"4add9"},{n:"5/7"},{n:"//"},  {n:"4add9"},{n:"5sus4"}]},
+     {label:"Bridge",numbers:[{n:"4add9"},{n:"5sus4"},{n:"//"},  {n:"6m7"},{n:"5/7"}]}
+   ],
+   notes:"Capo 2, sounds in A. 4add2=Cadd9, 1/3=G/B, 5sus=Dsus4, 6m7=Em7, 5/7=D/F#."}
+,
+  // ── 30. Rest On Us — Key A ─────────────────────────────────────
+  {id:30,title:"Rest On Us",artist:"Brandon Lake / Maverick City / UPPERROOM",defaultKey:"A",keys:["G","A","B","C"],
+   tags:["rest on us","as the spirit was moving","come rest on us","holy spirit","fire and wind"],
+   verified:true,bpm:null,
+   sections:[
+     {label:"Verse 1",numbers:[{n:"1"},{n:"//"},  {n:"4"},{n:"//"},  {n:"6m"},{n:"4"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"1/3"},{n:"//"},  {n:"4"},{n:"5"},{n:"//"},  {n:"6m"},{n:"1"},{n:"//"},  {n:"4"}]},
+     {label:"Verse 2",numbers:[{n:"1"},{n:"//"},  {n:"4"},{n:"//"},  {n:"6m"},{n:"4"}]},
+     {label:"Bridge",numbers:[{n:"1"},{n:"2m7"},{n:"//"},  {n:"6m"},{n:"4"}]}
+   ],
+   notes:"Key A. Verse: A / D / F#m D. Chorus: A A/C# / D E / F#m A / D. Bridge: A(*F/C)=chromatic passing chord, Bm7 / F#m D. Soaking/spontaneous worship feel."},
+
+  // ── 31. At Your Name — Key G ───────────────────────────────────
+  {id:31,title:"At Your Name",artist:"Phil Wickham / Tim Hughes",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["at your name","yahweh","the mountains shake and crumble","shout your name","no one like our God"],
+   verified:true,bpm:null,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"4"},{n:"//"},  {n:"1"},{n:"4"},{n:"//"},  {n:"5"},{n:"6m"},{n:"4"},{n:"//"},  {n:"5"}]},
+     {label:"Chorus",numbers:[{n:"1sus"},{n:"1"},{n:"//"},  {n:"6m"},{n:"//"},  {n:"5"},{n:"4"},{n:"1"}]},
+     {label:"Bridge",numbers:[{n:"5"},{n:"//"},  {n:"6m"},{n:"4"},{n:"//"},  {n:"5"},{n:"//"},  {n:"1"},{n:"//"},  {n:"4"},{n:"5"},{n:"6m"},{n:"5"}]}
+   ],
+   notes:"Key G. Verse: G C / G C / D Em C / D. Chorus: Gsus G / Em / D C G. Bridge: D / Em C / D / G / C D Em D."},
+
+  // ── 32. I See Heaven — Key G ───────────────────────────────────
+  {id:32,title:"I See Heaven",artist:"Bryan & Katie Torwalt",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["i see heaven","bryan torwalt","katie torwalt","jesus culture"],
+   verified:false,bpm:null,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"4"},{n:"6m"},{n:"5"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"4"},{n:"6m"},{n:"5"}]}
+   ],
+   notes:"PDF contained no chord data. Chart needs to be verified and filled in manually."},
+
+  // ── 33. Freedom — Key G ────────────────────────────────────────
+  {id:33,title:"Freedom",artist:"William Matthews / Bethel Music",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["freedom","bethel music","william matthews","there is freedom"],
+   verified:false,bpm:null,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"4"},{n:"6m"},{n:"5"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"4"},{n:"6m"},{n:"5"}]}
+   ],
+   notes:"PDF contained no chord data. Chart needs to be verified and filled in manually."},
+
+  // ── 34. Glory Honor Power — Key G ─────────────────────────────
+  {id:34,title:"Glory Honor Power",artist:"Influence Music / Melody Noel",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["glory honor power","holy is the lord","seated on the throne","worthy worthy of praise","hallelujah"],
+   verified:true,bpm:77,
+   sections:[
+     {label:"Verse 1",numbers:[{n:"1"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"4add2"}]},
+     {label:"Verse 2",numbers:[{n:"1"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"4add2"},{n:"2m7(4)"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"4add2"},{n:"//"},  {n:"5(4)"}]},
+     {label:"Verse 3",numbers:[{n:"1"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"4add2"},{n:"2m7(4)"}]},
+     {label:"Bridge",numbers:[{n:"4add2"},{n:"5(4)"},{n:"//"},  {n:"4add2"},{n:"5(4)"},{n:"6m7"},{n:"//"},  {n:"4add2"},{n:"5(4)"},{n:"//"},  {n:"6m7"},{n:"5(4)"}]},
+     {label:"Tag",numbers:[{n:"4add2"},{n:"1"},{n:"5(4)"},{n:"//"},  {n:"6m7"},{n:"5(4)"}]}
+   ],
+   notes:"Key G. Verse: G / Em7 / C2. Chorus: G / Em7 / C2 / D(4). Bridge: C2 D(4) / C2 D(4) Em7 / C2 D(4) / Em7 D(4). Tag: Glory honor power forever — C2 G D(4) Em7 D(4)."},
+
+  // ── 35. Living Hope — Key G ────────────────────────────────────
+  {id:35,title:"Living Hope",artist:"Phil Wickham / Brian Johnson",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["living hope","how great the chasm","jesus christ my living hope","hallelujah praise the one","beautiful savior"],
+   verified:true,bpm:72,
+   sections:[
+     {label:"Intro",numbers:[{n:"1"},{n:"4add2"},{n:"//"}]},
+     {label:"Verse 1",numbers:[{n:"1"},{n:"5sus"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"5sus"},{n:"//"},  {n:"1"},{n:"5sus"},{n:"//"},  {n:"4add2"},{n:"5sus"},{n:"1"},{n:"//"},  {n:"4add2"},{n:"1"},{n:"//"},  {n:"6m7"},{n:"5(4)"},{n:"//"},  {n:"1"},{n:"5sus"},{n:"//"},  {n:"4"},{n:"5sus"},{n:"1"},{n:"4add2"}]},
+     {label:"Verse 2",numbers:[{n:"1"},{n:"5sus"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"5sus"},{n:"//"},  {n:"1"},{n:"5sus"},{n:"//"},  {n:"4"},{n:"5sus"},{n:"1"},{n:"//"},  {n:"4add2"},{n:"1"},{n:"//"},  {n:"6m7"},{n:"5(4)"},{n:"//"},  {n:"1"},{n:"5sus"},{n:"//"},  {n:"4"},{n:"5sus"},{n:"1"}]},
+     {label:"Chorus",numbers:[{n:"4add2"},{n:"1"},{n:"5"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"4add2"},{n:"1"},{n:"5"},{n:"//"},  {n:"6m7"},{n:"//"},  {n:"1/5"},{n:"4add2"},{n:"1"},{n:"5"},{n:"6m7"}]},
+     {label:"Verse 3",numbers:[{n:"1"},{n:"5sus"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"5sus"},{n:"//"},  {n:"1"},{n:"5sus"},{n:"//"},  {n:"4add2"},{n:"5sus"},{n:"1"}]},
+     {label:"Ending",numbers:[{n:"4add2"},{n:"1/5"},{n:"5"},{n:"//"},  {n:"6m"},{n:"1/3"},{n:"//"},  {n:"4add2"},{n:"1/5"},{n:"5"},{n:"1"}]}
+   ],
+   notes:"Key G. Verse: G Dsus / C2 Em7 Dsus / G Dsus / C Dsus G. Chorus: Hallelujah praise the One — C2 G D / Em7 / C2 G D / Em7 / G/D C2 G D Em. Ending: C2 G/D D / Em G/B / C2 G/D D G."},
+
+  // ── 36. Christ And Christ Crucified — Key G ───────────────────
+  {id:36,title:"Christ And Christ Crucified",artist:"Lindy Cofer / Circuit Rider",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["christ and christ crucified","we sing christ and christ crucified","hallelujah","wages of sin","in you we're raised from death to life"],
+   verified:true,bpm:72,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"1sus"},{n:"//"},  {n:"6m7"},{n:"4add2(no3)"},{n:"//"},  {n:"1/3"},{n:"4add2(no3)"},{n:"1/5"},{n:"5sus"}]},
+     {label:"Chorus",numbers:[{n:"4add2"},{n:"1"},{n:"1/3"},{n:"//"},  {n:"4add2"},{n:"2m7"},{n:"//"},  {n:"6m7"},{n:"1/5"},{n:"5sus"},{n:"1"}]},
+     {label:"Bridge",numbers:[{n:"1"},{n:"1/3"},{n:"//"},  {n:"4add2(no3)"},{n:"5(4)"},{n:"//"},  {n:"6m7"},{n:"1/3"},{n:"//"},  {n:"4add2(no3)"},{n:"2m7(4)"}]}
+   ],
+   notes:"Key G. Verse: G5 G G2sus / Em7 C2(no3) / G/B C2(no3) G/D Dsus. Chorus: We sing Christ and Christ crucified / In You we're raised from death to life — C2 G G/B / C2 Am7 / Em7 G/D Dsus G. Bridge: Death couldn't hold You — G G/B / C2(no3) D(4) / Em7 G/B / C2(no3) Am7(4)."},
+
+  // ── 37. The Joy — Key G ────────────────────────────────────────
+  {id:37,title:"The Joy",artist:"Andrew Holt / Mitch Wong",defaultKey:"G",keys:["F","G","A","Bb"],
+   tags:["the joy","the joy of the lord is my strength","this is the day you made","o my soul bless his name","i've got the joy"],
+   verified:true,bpm:132,
+   sections:[
+     {label:"Verse",numbers:[{n:"1"},{n:"//"},  {n:"6m"},{n:"4"},{n:"1"}]},
+     {label:"Pre-Chorus",numbers:[{n:"4"},{n:"5"},{n:"1"},{n:"//"},  {n:"4"},{n:"5"}]},
+     {label:"Chorus",numbers:[{n:"1"},{n:"2m"},{n:"4"},{n:"//"},  {n:"6m"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"2m"},{n:"//"},  {n:"1"},{n:"2m"},{n:"1"}]},
+     {label:"Bridge",numbers:[{n:"5"},{n:"4"},{n:"1"},{n:"//"}]},
+     {label:"Tag",numbers:[{n:"1"},{n:"2m"},{n:"4"},{n:"1"}]}
+   ],
+   notes:"Key G. Verse: G / Em C G. Pre-Chorus: C D G / C D. Chorus: G Am C / Em D / G/B Am / G Am G. Bridge: Let it rise up like a river — D C G. Tag: I've got the joy — G Am C G."},
+
+  // ── 38. Holy Forever (D) — Key D ──────────────────────────────
+  {id:38,title:"Holy Forever (D)",artist:"Chris Tomlin / Phil Wickham",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["holy forever","and the angels cry holy","all creation cries holy","you are lifted high","a thousand generations","holy forever key d"],
+   verified:true,bpm:72,
+   sections:[
+     {label:"Intro",numbers:[{n:"4"},{n:"6m"},{n:"5sus"},{n:"//"},  {n:"1/3"},{n:"//"},  {n:"6m"},{n:"5sus"}]},
+     {label:"Verse",numbers:[{n:"1"},{n:"4add2"},{n:"1"},{n:"//"},  {n:"6m7"},{n:"5sus"},{n:"4add2"},{n:"//"},  {n:"1"},{n:"4add2"},{n:"1"},{n:"//"},  {n:"6m7"},{n:"5(4)"},{n:"4add2"}]},
+     {label:"Pre-Chorus",numbers:[{n:"4add2"},{n:"6m7"},{n:"//"},  {n:"5"},{n:"//"},  {n:"6m7"},{n:"4add2"},{n:"//"},  {n:"4add2"},{n:"6m7"},{n:"//"},  {n:"5"},{n:"//"},  {n:"6m7"},{n:"2m7"}]},
+     {label:"Chorus",numbers:[{n:"4add2"},{n:"6m7"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"6m7"},{n:"//"},  {n:"2m7"},{n:"5"},{n:"//"},  {n:"1"},{n:"1sus"},{n:"1"}]}
+   ],
+   notes:"Key D. G2=Gadd2. Intro: G Bm Asus / D/F# / Bm Asus. Verse: D G2 D / Bm7 Asus G2 / D G2 D / Bm7 A(4) G2. Pre-Ch: G2 Bm7 / A / Bm7 G2 / G2 Bm7 / A / Bm7 Em7. Chorus: G2 Bm7 A / D/F# Bm7 / Em7 A / D Dsus D."},
+
+  // ── 39. I Want Jesus — Key D ───────────────────────────────────
+  {id:39,title:"I Want Jesus",artist:"John Wilds / BJ Putnam / Bethel Music",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["i want jesus","oh i want jesus","take this world and give me him","no more mixture","no substitute will ever do","isn't he enough"],
+   verified:true,bpm:70,
+   sections:[
+     {label:"Chorus",numbers:[{n:"1"},{n:"6m7"},{n:"5"},{n:"4add2"},{n:"//"},  {n:"1/3"},{n:"4add2"},{n:"1/4"},{n:"5"},{n:"1"}]},
+     {label:"Verse 1",numbers:[{n:"5/3"},{n:"6m7"},{n:"5"},{n:"4add2"},{n:"//"},  {n:"1/3"},{n:"5sus"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"4add2"},{n:"5"},{n:"6m7"},{n:"//"},  {n:"5/3"},{n:"1"},{n:"6m7"},{n:"5sus"}]},
+     {label:"Verse 2",numbers:[{n:"5/3"},{n:"6m7"},{n:"5"},{n:"4add2"},{n:"//"},  {n:"1/3"},{n:"5sus"},{n:"5"},{n:"//"},  {n:"1/3"},{n:"4add2"},{n:"5"},{n:"6m7"},{n:"//"},  {n:"5/3"},{n:"1"},{n:"6m7"},{n:"5sus"}]},
+     {label:"Bridge",numbers:[{n:"1"},{n:"1sus"},{n:"//"},  {n:"1"},{n:"1sus"},{n:"//"},  {n:"1/2"},{n:"6m7"},{n:"4add2"},{n:"5"}]}
+   ],
+   notes:"Key D. Chorus: D (Em7) Bm7 (A) G2 / D/F# G2 D/A A D. Verse: A/C# Bm7 A G2 / D/F# Asus A / D/F# G2 A Bm7 / A/C# D Bm7 Asus. Bridge: Isn't He enough — D Dsus / D Dsus / D/C# Bm7 G2 A."},
+
+  // ── 40. Come And Let Your Presence — Key D ────────────────────
+  {id:40,title:"Come And Let Your Presence",artist:"Tim Reimherr",defaultKey:"D",keys:["C","D","E","F"],
+   tags:["come and let your presence","fill our praise","fill this place","you are the one we want to meet","forerunner worship"],
+   verified:true,bpm:81,
+   sections:[
+     {label:"Chorus",numbers:[{n:"4"},{n:"6m"},{n:"//"},  {n:"5"},{n:"//"},  {n:"4"},{n:"6m"},{n:"//"},  {n:"5"}]},
+     {label:"Verse",numbers:[{n:"1b5"},{n:"//"}]},
+     {label:"Bridge",numbers:[{n:"6m"},{n:"4"},{n:"//"},  {n:"6m"},{n:"5"}]}
+   ],
+   notes:"Key D. Chorus: For You are the One we want to meet — G Bm / A / G Bm / A. Verse: D5 (power chord — all four lines). Bridge: It's all for You — Em G / Bm F#m (key D context: 2m=Em, 4=G, 6m=Bm, 3m=F#m)."}
 ];
+
 
 // Default favourites — song IDs starred for every new user out of the box.
 // Changing this list only affects new installs or after a version reset.
 // Each user can star/unstar freely on their own device without affecting others.
-const DEFAULT_FAVOURITES=new Set([10,11,19,14,15,4,16,17,18,20,21,22,23,24,25,26,27,28,29]); // Agnus Dei, Give Me Jesus, Here I Am To Worship, How Great Is Our God, Show Me Your Face Lord, What a Beautiful Name, Worthy (Elevation), Worthy Is The Lamb, Worthy of It All, Holy Forever, I Exalt Thee, Yeshua
+const DEFAULT_FAVOURITES=new Set([10,11,19,14,15,4,16,17,18,20,21,22,23,24,25,26,27,28,29,30,31,34,35,36,37,38,39,40,41]); // Agnus Dei, Give Me Jesus, Here I Am To Worship, How Great Is Our God, Show Me Your Face Lord, What a Beautiful Name, Worthy (Elevation), Worthy Is The Lamb, Worthy of It All, Holy Forever, I Exalt Thee, Yeshua
 
 // Reset stale old library so new defaults load fresh — v3 forces refresh for corrected chords
 (function(){
   const ver=localStorage.getItem('worship-ver');
-  if(ver!=='15'){localStorage.removeItem('worship-songs');localStorage.removeItem('worship-order');localStorage.removeItem('worship-favs-init');localStorage.setItem('worship-ver','15');}
-
+  if(ver!=='23'){
+    // New version — wipe all song data so DEFAULT_SONGS reloads clean
+    localStorage.removeItem('worship-songs');
+    localStorage.removeItem('worship-order');
+    localStorage.removeItem('worship-favs-init');
+    localStorage.removeItem('oncue-songs-v2');
+    localStorage.removeItem('oncue-songs-cleared');
+    localStorage.setItem('worship-ver','23');
+  }
 })();
 
 let songs=JSON.parse(localStorage.getItem('worship-songs')||'null')||DEFAULT_SONGS;
+
 let songOrder=JSON.parse(localStorage.getItem('worship-order')||'null')||DEFAULT_SONGS.map(s=>s.id);
 songOrder=songOrder.filter(id=>songs.find(s=>s.id===id));
 songs.forEach(s=>{if(!songOrder.includes(s.id)) songOrder.push(s.id);});
@@ -1531,9 +2003,10 @@ function parseNum(n){
   const paren=parenMatch?parenMatch[1]:null;
   if(parenMatch) rootPart=rootPart.replace(parenMatch[0],'');
   // extract modifier: maj7, m7, add2, sus2, sus4, sus, m, 7, etc.
-  const modMatch=rootPart.match(/(maj7|maj|m7|add9|add2|sus4|sus2|sus|dim|aug|7|9|11|13|m)/);
-  const mod=modMatch?modMatch[0]:null;
-  const rootStr=modMatch?rootPart.slice(0,modMatch.index):rootPart;
+  // Root is always a single digit (1-7), everything after is the modifier
+  const rootDigitMatch=rootPart.match(/^([1-7])(.*)/);
+  const rootStr=rootDigitMatch?rootDigitMatch[1]:rootPart;
+  const mod=rootDigitMatch&&rootDigitMatch[2]?rootDigitMatch[2]:null;
   const root=parseInt(rootStr);
   const bass=bassPart?parseInt(bassPart.replace(/m|maj7|sus|add\d/g,'')):null;
   return {root,bass,mod,paren,raw:n};
@@ -1703,7 +2176,71 @@ function buildLyricsPanel(song,k,twoCol){
     });
     // Apply override if one exists
     const override=lineKey&&lyricOverrides[lineKey];
-    const finalChord=override!==undefined?override:chordRow.trimEnd();
+    let finalChord;
+    if(override!==undefined){
+      if(Array.isArray(override)){
+        // New format: array of per-segment space offsets — re-render with current key
+        let rebuilt='';
+        segments.forEach((seg,si)=>{
+          const word=seg.w||'';
+          const chordName=seg.n?toChord(seg.n,k):'';
+          const extraSpaces=override[si]||0;
+          if(chordName){
+            const cd=chordName+' ';
+            const pl=Math.max(word.length,cd.length);
+            rebuilt+=' '.repeat(extraSpaces)+cd.padEnd(pl-extraSpaces<0?0:pl);
+          } else {
+            rebuilt+=' '.repeat(word.length);
+          }
+        });
+        finalChord=rebuilt.trimEnd();
+      } else {
+        // Legacy string format — auto-migrate to offset array
+        // Extract positions of each chord in the old string, compute offsets vs default
+        const offsets=[];
+        let defaultPos=0;
+        segments.forEach((seg,si)=>{
+          const word=seg.w||'';
+          const chordName=seg.n?toChord(seg.n,k):'';
+          if(chordName){
+            // Find leading spaces before where this chord WOULD appear in default
+            // Compare to where chord appears in override string
+            // We find the chord name in the override string near defaultPos
+            const searchFrom=Math.max(0,defaultPos-2);
+            const idx=override.indexOf(chordName,searchFrom);
+            const extra=idx>=0?Math.max(0,idx-defaultPos):0;
+            offsets.push(extra);
+            const cd=chordName+' ';
+            const pl=Math.max(word.length,cd.length);
+            defaultPos+=pl;
+          } else {
+            offsets.push(0);
+            defaultPos+=word.length;
+          }
+        });
+        // Save migrated offsets back so this only runs once
+        lyricOverrides[lineKey]=offsets;
+        localStorage.setItem('oncue-lyric-overrides',JSON.stringify(lyricOverrides));
+        if(fbDb) fbDb.ref('oncue/lyricSpacing').set(lyricOverrides);
+        // Render with offsets
+        let rebuilt='';
+        segments.forEach((seg,si)=>{
+          const word=seg.w||'';
+          const chordName=seg.n?toChord(seg.n,k):'';
+          const extra=offsets[si]||0;
+          if(chordName){
+            const cd=chordName+' ';
+            const pl=Math.max(word.length,cd.length);
+            rebuilt+=' '.repeat(extra)+cd.padEnd(pl);
+          } else {
+            rebuilt+=' '.repeat(word.length);
+          }
+        });
+        finalChord=rebuilt.trimEnd();
+      }
+    } else {
+      finalChord=chordRow.trimEnd();
+    }
     const finalWord=wordRow.trimEnd();
     if(!finalChord&&!finalWord) return '';
     return `<div class="lyric-line" data-linekey="${lineKey||''}"><div class="lyric-chord-row">${finalChord||'\u00a0'}</div><div class="lyric-word-row">${finalWord||'\u00a0'}</div></div>`;
@@ -2048,7 +2585,8 @@ function saveSong(){
   const sections=t2s(document.getElementById('m-chart').value.trim());
   const notes=document.getElementById('m-notes').value.trim();
   const bpm=parseInt(document.getElementById('m-bpm').value)||null;
-  const verified=document.getElementById('m-verified').checked;
+  const verEl=document.getElementById('m-verified');
+  const verified=verEl?verEl.checked:false;
   if(modalSongId){
     const idx=songs.findIndex(s=>s.id===modalSongId);
     if(idx>-1){
@@ -2355,6 +2893,7 @@ function initSettings(){
 // SETLIST
 // ══════════════════════════════════════════════════════════════
 let setlist=[]; // always start empty — only loaded explicitly from splash or dropdown
+let setKeys={}; // songId -> key override for this setlist slot
 let activeSetlistName=''; // name of currently loaded setlist
 let setMode=false; // whether + overlays are showing
 let fbSetRef=null; // Firebase ref for setlist sync
@@ -2363,10 +2902,11 @@ function saveSetlist(){localStorage.setItem('oncue-setlist',JSON.stringify(setli
 
 function clearSet(){
   setlist=[];
+  setKeys={};
   activeSetlistName='';
   saveSetlist();
   updateActiveSetlistLabel();
-  if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[],timestamp:Date.now()});
+  if(syncRole==='conductor'&&fbSetRef){setKeys={};fbSetRef.set({ids:[],keys:{},timestamp:Date.now()});}
   renderSetStrip();
   renderGrid();
 }
@@ -2384,7 +2924,7 @@ function addToSet(songId){
   if(setlist.length>=8){alert('Maximum 8 songs in a set.');return;}
   setlist.push(songId);
   saveSetlist();
-  if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],timestamp:Date.now()});
+  if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
   renderSetStrip();
   renderGrid();
 }
@@ -2392,7 +2932,7 @@ function addToSet(songId){
 function removeFromSet(songId){
   setlist=setlist.filter(id=>id!==songId);
   saveSetlist();
-  if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],timestamp:Date.now()});
+  if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
   renderSetStrip();
   renderGrid();
 }
@@ -2408,16 +2948,44 @@ function renderSetStrip(){
     const s=songs.find(x=>x.id===id);
     if(!s) return '';
     const isActive=id===activeSongId;
-    // Short title — truncate at 18 chars
+    const tileKey=setKeys[id]||s.defaultKey;
+    const isMD=syncRole==='conductor';
+    const keyBadge=isMD
+      ? `<select class="set-tile-key" onclick="event.stopPropagation()" onchange="event.stopPropagation();setKeyForSetSong(${id},this.value)">${s.keys.map(k=>`<option${k===tileKey?' selected':''} value="${k}">${k}</option>`).join('')}</select>`
+      : `<div class="set-tile-key">${tileKey}</div>`;
     return `<div class="set-tile${isActive?' active-song':''}" data-setid="${id}" draggable="true"
-      onclick="openChart(songs.find(x=>x.id===${id}))"
+      onclick="openSetSong(${id})"
       title="${s.title}">
       <div class="set-tile-num">${i+1}</div>
       <div class="set-tile-name">${s.title}</div>
+      ${keyBadge}
       <span class="set-tile-remove" onclick="event.stopPropagation();removeFromSet(${id})">✕</span>
     </div>`;
   }).join('');
   attachSetDragDrop();
+}
+
+function openSetSong(id){
+  const song=songs.find(x=>x.id===id);
+  if(!song) return;
+  const key=setKeys[id]||song.defaultKey;
+  openChart(song);
+  // Apply set key AFTER openChart (which resets selectedKey to null)
+  selectedKey=key;
+  renderChart(song,key);
+}
+
+function setKeyForSetSong(id,key){
+  setKeys[id]=key;
+  // If this song is currently open, re-render with new key
+  if(selectedSong&&selectedSong.id===id){
+    selectedKey=key;
+    renderChart(selectedSong,key);
+  }
+  // Sync to Firebase if MD
+  if(syncRole==='conductor'&&fbSetRef){
+    fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
+  }
 }
 
 function attachSetDragDrop(){
@@ -2443,7 +3011,7 @@ function attachSetDragDrop(){
       setlist.splice(fromIdx,1);
       setlist.splice(toIdx,0,dragSrcId);
       saveSetlist();
-      if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],timestamp:Date.now()});
+      if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
       renderSetStrip();
     });
     // Touch drag for iPad
@@ -2468,7 +3036,7 @@ function attachSetDragDrop(){
       setlist.splice(fromIdx,1);
       setlist.splice(toIdx,0,touchDragId);
       saveSetlist();
-      if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],timestamp:Date.now()});
+      if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
       renderSetStrip();
     },{passive:true});
   });
@@ -2822,7 +3390,36 @@ function saveLyricSpacing(){
   const inputs=document.querySelectorAll('.lse-chord-input');
   inputs.forEach(inp=>{
     const key=inp.dataset.linekey;
-    if(key) lyricOverrides[key]=inp.value;
+    if(!key) return;
+    // Parse the edited chord row back into per-segment offsets
+    // We stored data-segments on the input for this purpose
+    const segsJson=inp.dataset.segments;
+    if(segsJson){
+      const segs=JSON.parse(segsJson);
+      const editedRow=inp.value;
+      const offsets=[];
+      let pos=0;
+      segs.forEach(seg=>{
+        const word=seg.w||'';
+        const chordName=seg.chord||'';
+        if(chordName){
+          // Find where this chord appears in the edited row from current pos
+          const idx=editedRow.indexOf(chordName,pos);
+          if(idx>=0){
+            offsets.push(Math.max(0,idx-pos));
+            pos=idx+chordName.length+1; // +1 for trailing space
+          } else {
+            offsets.push(0);
+          }
+        } else {
+          offsets.push(0);
+          pos+=word.length;
+        }
+      });
+      lyricOverrides[key]=offsets;
+    } else {
+      lyricOverrides[key]=inp.value;
+    }
   });
   localStorage.setItem('oncue-lyric-overrides',JSON.stringify(lyricOverrides));
   if(fbDb){
@@ -2834,6 +3431,15 @@ function saveLyricSpacing(){
     closeLyricEditor();
     if(selectedSong) renderChart(selectedSong,selectedKey||effectiveKey(selectedSong));
   }
+}
+
+function clearAllLyricOverrides(){
+  if(!confirm('Clear ALL lyric spacing overrides for every song?')) return;
+  lyricOverrides={};
+  localStorage.removeItem('oncue-lyric-overrides');
+  if(fbDb) fbDb.ref('oncue/lyricSpacing').remove();
+  showPushBanner('All spacing overrides cleared');
+  if(selectedSong) renderChart(selectedSong,selectedKey||effectiveKey(selectedSong));
 }
 
 function resetLyricSpacing(songId,k){
@@ -2852,6 +3458,9 @@ let fbSetlistLibRef=null;
 let slmRenamingId=null;
 
 function initSetlistLibrary(){
+  // Load local setlists first as fallback
+  const local=JSON.parse(localStorage.getItem('oncue-saved-setlists')||'[]');
+  if(local.length&&!fbDb){savedSetlists=local;renderSavedSetlistDropdowns();}
   if(!fbDb) return;
   fbSetlistLibRef=fbDb.ref('oncue/savedSetlists');
   fbSetlistLibRef.on('value',snap=>{
@@ -2866,8 +3475,15 @@ function saveCurrentSetlist(){
   if(!setlist.length){alert('Add some songs to the set first.');return;}
   const name=prompt('Name this setlist:',new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+' Service');
   if(!name) return;
-  if(!fbSetlistLibRef){alert('Not connected — cannot save.');return;}
-  fbSetlistLibRef.push({name,ids:[...setlist],createdAt:Date.now()})
+  if(!fbSetlistLibRef){
+    const localId='local_'+Date.now();
+    savedSetlists.unshift({id:localId,name,ids:[...setlist],keys:{...setKeys},createdAt:Date.now()});
+    localStorage.setItem('oncue-saved-setlists',JSON.stringify(savedSetlists));
+    activeSetlistName=name;updateActiveSetlistLabel();
+    renderSavedSetlistDropdowns();
+    showPushBanner('Saved locally ✓');return;
+  }
+  fbSetlistLibRef.push({name,ids:[...setlist],keys:{...setKeys},createdAt:Date.now()})
     .then(()=>showPushBanner('Setlist saved ✓'))
     .catch(()=>alert('Save failed'));
 }
@@ -2876,11 +3492,12 @@ function loadSavedSetlist(id){
   const s=savedSetlists.find(x=>x.id===id);
   if(!s) return;
   setlist=s.ids.filter(id=>songs.find(x=>x.id===id));
+  setKeys=s.keys||{};
   activeSetlistName=s.name;
   saveSetlist();
   updateActiveSetlistLabel();
   if(syncRole==='conductor'&&typeof fbSetRef!=='undefined'&&fbSetRef)
-    fbSetRef.set({ids:[...setlist],timestamp:Date.now()});
+    fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
   renderSetStrip();
   renderGrid();
   showPushBanner('Loaded: '+s.name);
@@ -2896,6 +3513,7 @@ function onLoadSelectChange(sel){
   const val=sel.value;
   if(!val) return; // placeholder tapped, nothing to do
   if(val==='__clear__'){sel.value='';clearSet();return;}
+  if(val==='__manage__'){sel.value='';openSetlistManager();return;}
   if(val==='__delete__'){sel.value='';showDeleteSetlistPicker();return;}
   loadSavedSetlist(val);
   sel.value=''; // reset to placeholder after loading
@@ -2914,8 +3532,10 @@ function showDeleteSetlistPicker(){
 
 // ── SETLIST MANAGER ───────────────────────────────────────────────
 function openSetlistManager(){
+  const scr=document.getElementById('slm-screen');
+  if(!scr) return;
+  scr.classList.add('open');
   renderSetlistManager();
-  document.getElementById('slm-screen').classList.add('open');
 }
 
 function closeSetlistManager(){
@@ -2929,6 +3549,7 @@ function renderSetlistManager(){
   const note=document.getElementById('slm-conductor-note');
   const createRow=document.getElementById('slm-create-row');
   const list=document.getElementById('slm-list');
+  if(!note||!createRow||!list) return; // guard against missing DOM
   note.textContent=isMD?'MD mode — you can create, rename and delete setlists.':'Viewer mode — you can load setlists. Switch to MD to edit.';
   note.style.display='block';
   createRow.style.display=isMD?'flex':'none';
@@ -2953,12 +3574,25 @@ function renderSetlistManager(){
 
 function slmCreateNew(){
   const name=document.getElementById('slm-new-name').value.trim();
-  if(!name||!fbSetlistLibRef) return;
-  fbSetlistLibRef.push({name,ids:[...setlist],createdAt:Date.now()}).then(()=>{
+  if(!name) return;
+  const entry={name,ids:[...setlist],keys:{...setKeys},createdAt:Date.now()};
+  if(fbSetlistLibRef){
+    fbSetlistLibRef.push(entry).then(()=>{
+      document.getElementById('slm-new-name').value='';
+      document.getElementById('slm-create-btn').disabled=true;
+      showPushBanner('Setlist created ✓');
+    });
+  } else {
+    // Offline fallback — save to localStorage
+    const localId='local_'+Date.now();
+    savedSetlists.unshift({id:localId,...entry});
+    localStorage.setItem('oncue-saved-setlists',JSON.stringify(savedSetlists));
+    renderSavedSetlistDropdowns();
+    renderSetlistManager();
     document.getElementById('slm-new-name').value='';
     document.getElementById('slm-create-btn').disabled=true;
-    showPushBanner('Setlist created ✓');
-  });
+    showPushBanner('Setlist saved locally ✓');
+  }
 }
 
 function slmLoad(id){loadSavedSetlist(id);closeSetlistManager();}
@@ -2974,6 +3608,12 @@ function slmSaveRename(id){
 function slmDelete(id){
   const s=savedSetlists.find(x=>x.id===id);
   if(!s||!confirm('Delete "'+s.name+'"?')) return;
+  if(!fbSetlistLibRef){
+    savedSetlists=savedSetlists.filter(x=>x.id!==id);
+    localStorage.setItem('oncue-saved-setlists',JSON.stringify(savedSetlists));
+    renderSavedSetlistDropdowns();renderSetlistManager();
+    showPushBanner('Deleted');return;
+  }
   deleteSavedSetlist(id);
 }
 
@@ -2999,7 +3639,7 @@ function renderSavedSetlistDropdowns(){
   const barSel=document.getElementById('setlist-load-select');
   if(barSel){
     const delOpt=syncRole==='conductor'?'<option value="__delete__">&#128465; Delete a setlist...</option>':'';
-    barSel.innerHTML='<option value="">Select Setlist</option><option value="__clear__">✕ Clear Set</option>'+opts+delOpt;
+    barSel.innerHTML='<option value="">Select Setlist</option><option value="__clear__">✕ Clear Set</option><option value="__manage__">▶ Manage Setlists...</option>'+opts+delOpt;
   }
   // Setlist manager if open
   if(document.getElementById('slm-screen')&&document.getElementById('slm-screen').classList.contains('open'))
