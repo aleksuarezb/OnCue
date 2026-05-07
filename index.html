@@ -214,21 +214,21 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .setlist-load-select{font-size:12px;padding:4px 8px;border:.5px solid var(--bdr2);border-radius:4px;background:var(--bg);color:var(--txt);cursor:pointer;outline:none;max-width:150px;flex-shrink:0}
 
 /* setlist strip — shown above search bar */
-.setlist-strip{display:none;flex-direction:column;margin-bottom:.75rem}
+.setlist-strip{display:none;flex-direction:column;margin-bottom:.35rem}
 .setlist-strip.visible{display:flex}
-.setlist-strip-label{font-size:11px;font-weight:500;color:#7C3AED;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.setlist-strip-label{font-size:10px;font-weight:500;color:#7C3AED;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;display:flex;align-items:center;gap:6px}
 .setlist-strip-label .set-clear-btn{font-size:11px;padding:2px 8px;border:.5px solid var(--bdr2);border-radius:4px;background:var(--bg2);color:var(--txt2);cursor:pointer;margin-left:auto}
-.setlist-tiles{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.setlist-tiles{display:flex;gap:4px;overflow-x:auto;padding-bottom:2px;-webkit-overflow-scrolling:touch}
 .setlist-tiles::-webkit-scrollbar{height:3px}
 .setlist-tiles::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:2px}
-.set-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:90px;max-width:110px;width:90px;padding:7px 8px;border-radius:var(--r);border:.5px solid #C4B5FD;background:#F5F3FF;cursor:pointer;flex-shrink:0;position:relative;transition:background .12s,border-color .12s;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.set-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:72px;max-width:90px;width:72px;padding:4px 6px;border-radius:var(--r);border:.5px solid #C4B5FD;background:#F5F3FF;cursor:pointer;flex-shrink:0;position:relative;transition:background .12s,border-color .12s;-webkit-user-select:none;user-select:none;touch-action:manipulation}
 .set-tile.active-song{background:#7C3AED;border-color:#7C3AED}
 .set-tile.active-song .set-tile-name{color:#fff}
 .set-tile.active-song .set-tile-num{color:rgba(255,255,255,.75)}
 .set-tile.dragging-set{opacity:.4;border-style:dashed}
 .set-tile.drag-over-set{border-color:#7C3AED;background:#EDE9FE;transform:scale(1.04)}
-.set-tile-num{font-size:10px;color:#7C3AED;font-weight:500;margin-bottom:2px}
-.set-tile-name{font-size:10px;font-weight:500;color:#3B1FA8;text-align:center;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-break:break-word;hyphens:auto}
+.set-tile-num{font-size:9px;color:#7C3AED;font-weight:500;margin-bottom:1px}
+.set-tile-name{font-size:11px;font-weight:500;color:#3B1FA8;text-align:center;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-word}
 .set-tile-remove{position:absolute;top:2px;right:3px;font-size:10px;color:#9CA3AF;cursor:pointer;line-height:1;padding:1px 2px}
 .set-tile-remove:hover{color:#E24B4A}
 .set-tile-key{font-size:9px;color:#7C3AED;font-weight:600;margin-top:2px;cursor:pointer;border:.5px solid #C4B5FD;border-radius:3px;padding:0 3px;background:#EDE9FE}
@@ -2895,6 +2895,7 @@ function initSettings(){
 let setlist=[]; // always start empty — only loaded explicitly from splash or dropdown
 let setKeys={}; // songId -> key override for this setlist slot
 let activeSetlistName=''; // name of currently loaded setlist
+let activeSetlistId=null; // id of currently loaded setlist for overwrite save
 let setMode=false; // whether + overlays are showing
 let fbSetRef=null; // Firebase ref for setlist sync
 
@@ -2904,6 +2905,7 @@ function clearSet(){
   setlist=[];
   setKeys={};
   activeSetlistName='';
+  activeSetlistId=null;
   saveSetlist();
   updateActiveSetlistLabel();
   if(syncRole==='conductor'&&fbSetRef){setKeys={};fbSetRef.set({ids:[],keys:{},timestamp:Date.now()});}
@@ -3473,18 +3475,41 @@ function initSetlistLibrary(){
 
 function saveCurrentSetlist(){
   if(!setlist.length){alert('Add some songs to the set first.');return;}
+
+  // If a setlist is currently loaded, offer to update it or save as new
+  if(activeSetlistId&&activeSetlistName){
+    const choice=confirm('Update ' + activeSetlistName + '? Press OK to update, Cancel to save as new.');
+    if(choice){
+      // Update existing
+      const update={ids:[...setlist],keys:{...setKeys}};
+      if(!fbSetlistLibRef){
+        const idx=savedSetlists.findIndex(x=>x.id===activeSetlistId);
+        if(idx>-1) savedSetlists[idx]={...savedSetlists[idx],...update};
+        localStorage.setItem('oncue-saved-setlists',JSON.stringify(savedSetlists));
+        renderSavedSetlistDropdowns();
+        showPushBanner('Setlist updated ✓');return;
+      }
+      fbSetlistLibRef.child(activeSetlistId).update(update)
+        .then(()=>showPushBanner('Setlist updated ✓'))
+        .catch(()=>alert('Update failed'));
+      return;
+    }
+  }
+
+  // Save as new
   const name=prompt('Name this setlist:',new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+' Service');
   if(!name) return;
   if(!fbSetlistLibRef){
     const localId='local_'+Date.now();
-    savedSetlists.unshift({id:localId,name,ids:[...setlist],keys:{...setKeys},createdAt:Date.now()});
+    const entry={id:localId,name,ids:[...setlist],keys:{...setKeys},createdAt:Date.now()};
+    savedSetlists.unshift(entry);
     localStorage.setItem('oncue-saved-setlists',JSON.stringify(savedSetlists));
-    activeSetlistName=name;updateActiveSetlistLabel();
+    activeSetlistName=name;activeSetlistId=localId;updateActiveSetlistLabel();
     renderSavedSetlistDropdowns();
     showPushBanner('Saved locally ✓');return;
   }
   fbSetlistLibRef.push({name,ids:[...setlist],keys:{...setKeys},createdAt:Date.now()})
-    .then(()=>showPushBanner('Setlist saved ✓'))
+    .then(ref=>{activeSetlistId=ref.key;activeSetlistName=name;updateActiveSetlistLabel();showPushBanner('Setlist saved ✓');})
     .catch(()=>alert('Save failed'));
 }
 
@@ -3494,6 +3519,7 @@ function loadSavedSetlist(id){
   setlist=s.ids.filter(id=>songs.find(x=>x.id===id));
   setKeys=s.keys||{};
   activeSetlistName=s.name;
+  activeSetlistId=s.id;
   saveSetlist();
   updateActiveSetlistLabel();
   if(syncRole==='conductor'&&typeof fbSetRef!=='undefined'&&fbSetRef)
