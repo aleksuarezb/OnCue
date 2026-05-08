@@ -3892,7 +3892,7 @@ function calcLyricsFontSize(song,k){
   if(maxLen===0) return {chord:15,word:17};
   // iPad column width in chars at 15px (9px/char monospace)
   // Two columns: use half screen minus gap. Approx 44 chars fits at 15px.
-  const maxCharsAt15=60;
+  const maxCharsAt15=50;
   if(maxLen<=maxCharsAt15) return {chord:15,word:17};
   const scale=maxCharsAt15/maxLen;
   const chord=Math.max(9,Math.round(15*scale));
