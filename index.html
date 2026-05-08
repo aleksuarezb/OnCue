@@ -159,22 +159,17 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .lyrics-panel h3{font-size:13px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
 .lyric-section{margin-bottom:1.5rem;break-inside:avoid;-webkit-column-break-inside:avoid}
 .lyric-line{margin-bottom:10px}
-.lyric-chord-row{font-size:15px;font-weight:700;color:#185FA5;white-space:pre;line-height:1.3;min-height:20px;letter-spacing:0}
-.lyric-word-row{font-size:17px;color:var(--txt);white-space:pre;line-height:1.6}
+.lyric-chord-row{font-size:15px;font-weight:700;color:#185FA5;white-space:pre;line-height:1.3;min-height:20px;letter-spacing:0;font-family:monospace}
+.lyric-word-row{font-size:17px;color:var(--txt);white-space:pre;line-height:1.6;font-family:monospace}
 .lyric-section-label{font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
 /* Each line is a flex row of chord+word segments */
 /* legacy lyric-seg styles removed — using two-row chord layout */
 .lyric-hint{font-size:12px;color:var(--txt2);margin-top:1rem;font-style:italic;border-top:.5px solid var(--bdr);padding-top:.75rem}
 
 /* compact lyrics when setlist is showing — fits iPad screen */
-.setlist-active .lyrics-panel{padding:.5rem .5rem;margin-top:.5rem}
-.setlist-active .lyrics-panel h3{margin-bottom:.5rem;font-size:11px}
-.setlist-active .lyric-chord-row{font-size:15px;min-height:20px;line-height:1.3}
-.setlist-active .lyric-word-row{font-size:16px;line-height:1.4}
-.setlist-active .lyric-line{margin-bottom:6px}
-.setlist-active .lyric-section{margin-bottom:.75rem}
-.setlist-active .lyric-section-label{font-size:10px;margin-bottom:.4rem}
-.setlist-active .lyric-hint{margin-top:.5rem;padding-top:.4rem;font-size:10px}
+/* setlist active — zoom lyrics panel to fit iPad screen */
+/* TO REVERT: change zoom value back to 1 or remove the two lines below */
+.setlist-active .lyrics-panel{zoom:0.82;margin-top:.5rem}
 .setlist-active .chart-panel{padding:.5rem .5rem}
 /* 2-column lyrics layout */
 .lyrics-columns{columns:2;column-gap:2rem;column-rule:1px solid var(--bdr2);align-items:start}
@@ -315,6 +310,17 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .slm-item-songs{font-size:12px;color:var(--txt2);line-height:1.5}
 .slm-item-date{font-size:11px;color:var(--txt2);margin-top:3px}
 .slm-item-actions{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
+.slm-set-section{margin-top:16px;border-top:.5px solid var(--bdr);padding-top:14px}
+.slm-set-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px}
+.slm-song-item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--r);margin-bottom:6px;cursor:default;touch-action:none}
+.slm-song-item.dragging{opacity:.4;border-style:dashed}
+.slm-song-item.drag-over{border-color:#7C3AED;background:#EDE9FE}
+.slm-song-drag{font-size:16px;color:var(--txt2);cursor:grab;padding:0 4px;flex-shrink:0}
+.slm-song-num{font-size:11px;font-weight:600;color:#7C3AED;width:16px;flex-shrink:0}
+.slm-song-name{flex:1;font-size:14px;font-weight:500;color:var(--txt)}
+.slm-song-key-sel{font-size:12px;padding:2px 5px;border:.5px solid var(--bdr2);border-radius:4px;background:var(--bg);color:var(--txt);cursor:pointer;flex-shrink:0}
+.slm-song-remove{font-size:12px;color:#9CA3AF;cursor:pointer;padding:2px 4px;flex-shrink:0}
+.slm-song-remove:hover{color:#E24B4A}
 .slm-load-btn{font-size:12px;padding:5px 10px;border:.5px solid #B5D4F4;border-radius:var(--r);background:#E6F1FB;color:#185FA5;cursor:pointer;white-space:nowrap}
 .slm-rename-btn{font-size:12px;padding:5px 10px;border:.5px solid var(--bdr2);border-radius:var(--r);background:var(--bg);color:var(--txt2);cursor:pointer;white-space:nowrap}
 .slm-delete-btn{font-size:12px;padding:5px 10px;border:.5px solid #F7C1C1;border-radius:var(--r);background:#FCEBEB;color:#A32D2D;cursor:pointer;white-space:nowrap}
@@ -324,8 +330,8 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 /* lyric spacing editor */
 .lyric-edit-btn{font-size:12px;padding:4px 10px;border:.5px solid var(--bdr2);border-radius:var(--r);background:var(--bg2);color:var(--txt2);cursor:pointer;white-space:nowrap}
 .lse-line{margin-bottom:10px}
-.lse-word-row{font-size:13px;color:var(--txt2);white-space:pre;margin-bottom:2px;font-family:monospace}
-.lse-chord-input{font-size:13px;font-family:monospace;border:.5px solid var(--bdr2);border-radius:4px;background:var(--bg);color:#185FA5;font-weight:700;padding:2px 6px;width:100%;box-sizing:border-box;white-space:pre}
+.lse-word-row{font-size:17px;color:var(--txt2);white-space:pre;margin-bottom:2px;font-family:monospace}
+.lse-chord-input{font-size:15px;font-weight:700;font-family:monospace;border:.5px solid var(--bdr2);border-radius:4px;background:var(--bg);color:#185FA5;font-weight:700;padding:2px 6px;width:100%;box-sizing:border-box;white-space:pre}
 .lse-save-btn{margin-top:10px;padding:7px 16px;background:#185FA5;color:#fff;border:none;border-radius:var(--r);font-size:13px;cursor:pointer}
 .lse-hint{font-size:11px;color:var(--txt2);margin-top:6px;font-style:italic}
 
@@ -2169,8 +2175,8 @@ function buildLyricsPanel(song,k,twoCol){
   }
 
   function renderLine(line,k,lineKey){
-    // Build word and chord rows
-    let segments=line.segments||[{n:line.n||'',w:line.l||''}];
+    const segments=line.segments||[{n:line.n||'',w:line.l||''}];
+    // Build default chord and word rows (no overrides)
     let chordRow='',wordRow='';
     segments.forEach(seg=>{
       const word=seg.w||'';
@@ -2190,21 +2196,9 @@ function buildLyricsPanel(song,k,twoCol){
     let finalChord;
     if(override!==undefined){
       if(Array.isArray(override)){
-        // New format: array of per-segment space offsets — re-render with current key
-        let rebuilt='';
-        segments.forEach((seg,si)=>{
-          const word=seg.w||'';
-          const chordName=seg.n?toChord(seg.n,k):'';
-          const extraSpaces=override[si]||0;
-          if(chordName){
-            const cd=chordName+' ';
-            const pl=Math.max(word.length,cd.length);
-            rebuilt+=' '.repeat(extraSpaces)+cd.padEnd(pl-extraSpaces<0?0:pl);
-          } else {
-            rebuilt+=' '.repeat(word.length);
-          }
-        });
-        finalChord=rebuilt.trimEnd();
+        // Check if this is positions format (values can be >7) or old offsets
+        // Positions: absolute col numbers. Old offsets: small numbers (0-10)
+        finalChord=buildChordRowFromPositions(segments,override,k);
       } else {
         // Legacy string format — auto-migrate to offset array
         // Extract positions of each chord in the old string, compute offsets vs default
@@ -3345,6 +3339,87 @@ function checkSplash(){
   }
 }
 
+// ── Lyric spacing: store absolute chord positions per line ────────
+// Override format: array of absolute column positions, one per segment
+// null entry = no chord for that segment, use default position
+// Rendering: place each chord name at its exact column position
+
+function buildDefaultChordRow(segments,k){
+  // Build the default chord row with standard alignment
+  let row='';
+  segments.forEach(seg=>{
+    const word=seg.w||'';
+    const chordName=seg.n?toChord(seg.n,k):'';
+    if(chordName){
+      const cd=chordName+' ';
+      row+=cd.padEnd(Math.max(word.length,cd.length));
+    } else {
+      row+=' '.repeat(word.length);
+    }
+  });
+  return row.trimEnd();
+}
+
+function buildDefaultPositions(segments,k){
+  // Calculate default absolute column position of each chord
+  const positions=[];
+  let col=0;
+  segments.forEach(seg=>{
+    const word=seg.w||'';
+    const chordName=seg.n?toChord(seg.n,k):'';
+    if(chordName){
+      positions.push(col);
+      col+=Math.max(word.length,(chordName+' ').length);
+    } else {
+      positions.push(null);
+      col+=word.length;
+    }
+  });
+  return positions;
+}
+
+function buildChordRowFromPositions(segments,positions,k){
+  // Place each chord at its absolute column position
+  let row='';
+  segments.forEach((seg,si)=>{
+    const chordName=seg.n?toChord(seg.n,k):'';
+    if(chordName&&positions[si]!=null){
+      const pos=positions[si];
+      // Pad row to reach this position
+      if(row.length<pos) row+=(' ').repeat(pos-row.length);
+      row+=chordName+' ';
+    }
+  });
+  return row.trimEnd();
+}
+
+function parsePositions(editedRow,segments,k){
+  // Read absolute positions of each chord — search sequentially to avoid false matches
+  const positions=[];
+  let searchFrom=0;
+  segments.forEach(seg=>{
+    const chordName=seg.chord||(seg.n?toChord(seg.n,k):'');
+    if(chordName){
+      // Find chord as a whole word — not as substring of longer chord name
+      let idx=-1;
+      let s=searchFrom;
+      while(s<editedRow.length){
+        const i=editedRow.indexOf(chordName,s);
+        if(i<0) break;
+        // Check it is not part of a longer chord name (next char must be space or end)
+        const after=editedRow[i+chordName.length];
+        if(!after||after===' '){idx=i;break;}
+        s=i+1;
+      }
+      positions.push(idx>=0?idx:null);
+      if(idx>=0) searchFrom=idx+chordName.length;
+    } else {
+      positions.push(null);
+    }
+  });
+  return positions;
+}
+
 function openLyricSpacingEditor(songId,k){
   const song=songs.find(s=>s.id===songId);
   const data=SONG_LYRICS[songId];
@@ -3354,27 +3429,25 @@ function openLyricSpacingEditor(songId,k){
   const linesHtml=visibleSections.map(sec=>{
     return sec.lines.map((line,li)=>{
       const lineKey=`${songId}_${sec.label}_${li}`;
-      let segments=line.segments||[{n:line.n||'',w:line.l||''}];
-      let chordRow='',wordRow='';
+      const segments=line.segments||[{n:line.n||'',w:line.l||''}];
+      const ov=lyricOverrides[lineKey];
+      let displayRow;
+      if(Array.isArray(ov)) displayRow=buildChordRowFromPositions(segments,ov,k);
+      else if(typeof ov==='string') displayRow=ov;
+      else displayRow=buildDefaultChordRow(segments,k);
+      let wordRow='';
       segments.forEach(seg=>{
         const word=seg.w||'';
         const chordName=seg.n?toChord(seg.n,k):'';
-        if(chordName){
-          const cd=chordName+' ';
-          const pl=Math.max(word.length,cd.length);
-          chordRow+=cd.padEnd(pl);
-          wordRow+=word.padEnd(pl);
-        } else {
-          chordRow+=' '.repeat(word.length);
-          wordRow+=word;
-        }
+        if(chordName) wordRow+=word.padEnd(Math.max(word.length,(chordName+' ').length));
+        else wordRow+=word;
       });
-      const currentVal=lyricOverrides[lineKey]!==undefined?lyricOverrides[lineKey]:chordRow.trimEnd();
+      const segsData=JSON.stringify(segments.map(seg=>({w:seg.w||'',n:seg.n||'',chord:seg.n?toChord(seg.n,k):''})));
       const wt=wordRow.trimEnd();
-      if(!wt&&!currentVal) return '';
+      if(!wt&&!displayRow) return '';
       return `<div class="lse-line">
-        <div class="lse-word-row">${wt||' '}</div>
-        <input class="lse-chord-input" data-linekey="${lineKey}" value="${currentVal.replace(/"/g,'&quot;')}" spellcheck="false"/>
+        <div class="lse-word-row">${wt||' '}</div>
+        <input class="lse-chord-input" data-linekey="${lineKey}" data-segments="${segsData.replace(/"/g,'&quot;')}" data-key="${k}" value="${displayRow.replace(/"/g,'&quot;')}" spellcheck="false"/>
       </div>`;
     }).join('');
   }).join('');
@@ -3387,7 +3460,7 @@ function openLyricSpacingEditor(songId,k){
         <button class="help-close" onclick="closeLyricEditor()">&#x2715;</button>
       </div>
       <div class="help-body">
-        <p style="font-size:13px;color:var(--txt2);margin-bottom:12px">Edit the chord row for each line. Add spaces before a chord to move it right. Saves sync to all devices.</p>
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:12px">Edit the chord row for each line. Add spaces before a chord to move it right. Works across all keys.</p>
         <div style="background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--r);padding:12px">
           ${linesHtml||'<p style="color:var(--txt2);font-size:13px">No lyric lines found.</p>'}
         </div>
@@ -3410,32 +3483,13 @@ function saveLyricSpacing(){
   inputs.forEach(inp=>{
     const key=inp.dataset.linekey;
     if(!key) return;
-    // Parse the edited chord row back into per-segment offsets
-    // We stored data-segments on the input for this purpose
     const segsJson=inp.dataset.segments;
+    const k=inp.dataset.key||selectedKey||'G';
     if(segsJson){
-      const segs=JSON.parse(segsJson);
-      const editedRow=inp.value;
-      const offsets=[];
-      let pos=0;
-      segs.forEach(seg=>{
-        const word=seg.w||'';
-        const chordName=seg.chord||'';
-        if(chordName){
-          // Find where this chord appears in the edited row from current pos
-          const idx=editedRow.indexOf(chordName,pos);
-          if(idx>=0){
-            offsets.push(Math.max(0,idx-pos));
-            pos=idx+chordName.length+1; // +1 for trailing space
-          } else {
-            offsets.push(0);
-          }
-        } else {
-          offsets.push(0);
-          pos+=word.length;
-        }
-      });
-      lyricOverrides[key]=offsets;
+      try{
+        const segs=JSON.parse(segsJson.replace(/&quot;/g,'"'));
+        lyricOverrides[key]=parsePositions(inp.value,segs,k);
+      }catch(e){lyricOverrides[key]=inp.value;}
     } else {
       lyricOverrides[key]=inp.value;
     }
@@ -3477,16 +3531,20 @@ let fbSetlistLibRef=null;
 let slmRenamingId=null;
 
 function initSetlistLibrary(){
-  // Load local setlists first as fallback
+  // Always load local setlists immediately
   const local=JSON.parse(localStorage.getItem('oncue-saved-setlists')||'[]');
-  if(local.length&&!fbDb){savedSetlists=local;renderSavedSetlistDropdowns();}
+  if(local.length){savedSetlists=local;renderSavedSetlistDropdowns();}
   if(!fbDb) return;
   fbSetlistLibRef=fbDb.ref('oncue/savedSetlists');
   fbSetlistLibRef.on('value',snap=>{
     const data=snap.val()||{};
-    savedSetlists=Object.entries(data).map(([id,v])=>({id,...v}))
-      .sort((a,b)=>b.createdAt-a.createdAt);
+    if(Object.keys(data).length){
+      savedSetlists=Object.entries(data).map(([id,v])=>({id,...v}))
+        .sort((a,b)=>b.createdAt-a.createdAt);
+    }
     renderSavedSetlistDropdowns();
+    if(document.getElementById('slm-screen')&&document.getElementById('slm-screen').classList.contains('open'))
+      renderSetlistManager();
   });
 }
 
@@ -3598,21 +3656,104 @@ function renderSetlistManager(){
   createRow.style.display=isMD?'flex':'none';
   const inp=document.getElementById('slm-new-name');
   inp.oninput=()=>{document.getElementById('slm-create-btn').disabled=!inp.value.trim();};
-  if(!savedSetlists.length){list.innerHTML='<div class="slm-empty">No saved setlists yet.</div>';return;}
-  list.innerHTML=savedSetlists.map(s=>{
-    const songNames=s.ids.map(id=>{const sg=songs.find(x=>x.id===id);return sg?sg.title:'?';}).join(', ');
-    const date=s.createdAt?new Date(s.createdAt).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'';
-    const isRenaming=slmRenamingId===s.id;
-    const nameHtml=isRenaming
-      ?`<input class="slm-item-name-input" id="slm-rename-${s.id}" value="${s.name.replace(/"/g,'&quot;')}" maxlength="60"/>`
-      :`<div class="slm-item-name">${s.name}</div>`;
-    const actionsHtml=isMD
-      ?isRenaming
-        ?`<button class="slm-save-name-btn" onclick="slmSaveRename('${s.id}')">&#10003; Save</button><button class="slm-rename-btn" onclick="slmCancelRename()">Cancel</button>`
-        :`<button class="slm-load-btn" onclick="slmLoad('${s.id}')">&#8659; Load</button><button class="slm-rename-btn" onclick="slmStartRename('${s.id}')">&#9998; Rename</button><button class="slm-delete-btn" onclick="slmDelete('${s.id}')">&#x1F5D1; Delete</button>`
-      :`<button class="slm-load-btn" onclick="slmLoad('${s.id}')">&#8659; Load</button>`;
-    return `<div class="slm-item"><div class="slm-item-info">${nameHtml}<div class="slm-item-songs">${songNames||'No songs'}</div><div class="slm-item-date">${date}</div></div><div class="slm-item-actions">${actionsHtml}</div></div>`;
-  }).join('');
+  // ── Saved setlists ──
+  if(!savedSetlists.length){
+    list.innerHTML='<div class="slm-empty">No saved setlists yet. Add songs to the set strip then tap 💾 Save set.</div>';
+  } else {
+    list.innerHTML=savedSetlists.map(s=>{
+      const songNames=s.ids.map(id=>{const sg=songs.find(x=>x.id===id);return sg?sg.title:'?';}).join(', ');
+      const date=s.createdAt?new Date(s.createdAt).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}):'';
+      const isRenaming=slmRenamingId===s.id;
+      const nameHtml=isRenaming
+        ?`<input class="slm-item-name-input" id="slm-rename-${s.id}" value="${s.name.replace(/"/g,'&quot;')}" maxlength="60"/>`
+        :`<div class="slm-item-name">${s.name}</div>`;
+      const actionsHtml=isMD
+        ?isRenaming
+          ?`<button class="slm-save-name-btn" onclick="slmSaveRename('${s.id}')">&#10003; Save</button><button class="slm-rename-btn" onclick="slmCancelRename()">Cancel</button>`
+          :`<button class="slm-load-btn" onclick="slmLoad('${s.id}')">&#8659; Load</button><button class="slm-rename-btn" onclick="slmStartRename('${s.id}')">&#9998; Rename</button><button class="slm-delete-btn" onclick="slmDelete('${s.id}')">&#x1F5D1; Delete</button>`
+        :`<button class="slm-load-btn" onclick="slmLoad('${s.id}')">&#8659; Load</button>`;
+      return `<div class="slm-item"><div class="slm-item-info">${nameHtml}<div class="slm-item-songs">${songNames||'No songs'}</div><div class="slm-item-date">${date}</div></div><div class="slm-item-actions">${actionsHtml}</div></div>`;
+    }).join('');
+  }
+
+  // ── Current set song order (drag to reorder) ──
+  if(setlist.length&&isMD){
+    const setHtml=setlist.map((id,i)=>{
+      const s=songs.find(x=>x.id===id);
+      if(!s) return '';
+      const tileKey=setKeys[id]||s.defaultKey;
+      const keyOpts=s.keys.map(k=>`<option value="${k}"${k===tileKey?' selected':''}>${k}</option>`).join('');
+      return `<div class="slm-song-item" data-setid="${id}" draggable="true">
+        <span class="slm-song-drag">&#8597;</span>
+        <span class="slm-song-num">${i+1}</span>
+        <span class="slm-song-name">${s.title}</span>
+        <select class="slm-song-key-sel" onchange="setKeyForSetSong(${id},this.value)" onclick="event.stopPropagation()">${keyOpts}</select>
+        <span class="slm-song-remove" onclick="removeFromSet(${id});renderSetlistManager()">&#x2715;</span>
+      </div>`;
+    }).join('');
+    list.innerHTML+=`<div class="slm-set-section">
+      <div class="slm-set-title">&#9654; Current Set${activeSetlistName?' — '+activeSetlistName:''}</div>
+      <div id="slm-song-list">${setHtml||'<div class="slm-empty">No songs in set.</div>'}</div>
+    </div>`;
+    attachSlmDragDrop();
+  }
+}
+
+function attachSlmDragDrop(){
+  const items=document.querySelectorAll('.slm-song-item');
+  let dragSrcId=null;
+  items.forEach(item=>{
+    item.addEventListener('dragstart',e=>{
+      dragSrcId=parseInt(item.dataset.setid);
+      item.classList.add('dragging');
+      e.dataTransfer.effectAllowed='move';
+    });
+    item.addEventListener('dragend',()=>item.classList.remove('dragging'));
+    item.addEventListener('dragover',e=>{e.preventDefault();item.classList.add('drag-over');});
+    item.addEventListener('dragleave',()=>item.classList.remove('drag-over'));
+    item.addEventListener('drop',e=>{
+      e.preventDefault();
+      item.classList.remove('drag-over');
+      const targetId=parseInt(item.dataset.setid);
+      if(dragSrcId===null||dragSrcId===targetId) return;
+      const fromIdx=setlist.indexOf(dragSrcId);
+      const toIdx=setlist.indexOf(targetId);
+      if(fromIdx<0||toIdx<0) return;
+      setlist.splice(fromIdx,1);
+      setlist.splice(toIdx,0,dragSrcId);
+      saveSetlist();
+      if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
+      renderSetStrip();
+      renderSetlistManager();
+    });
+    // Touch drag for iPad
+    let ty=0,tid=null;
+    item.addEventListener('touchstart',e=>{tid=parseInt(item.dataset.setid);ty=e.touches[0].clientY;},{passive:true});
+    item.addEventListener('touchmove',e=>{
+      e.preventDefault();
+      const t=document.elementFromPoint(e.touches[0].clientX,e.touches[0].clientY);
+      document.querySelectorAll('.slm-song-item').forEach(x=>x.classList.remove('drag-over'));
+      const over=t&&t.closest('.slm-song-item');
+      if(over) over.classList.add('drag-over');
+    },{passive:false});
+    item.addEventListener('touchend',e=>{
+      const t=document.elementFromPoint(e.changedTouches[0].clientX,e.changedTouches[0].clientY);
+      document.querySelectorAll('.slm-song-item').forEach(x=>x.classList.remove('drag-over'));
+      const over=t&&t.closest('.slm-song-item');
+      if(!over||!tid) return;
+      const targetId=parseInt(over.dataset.setid);
+      if(tid===targetId) return;
+      const fromIdx=setlist.indexOf(tid);
+      const toIdx=setlist.indexOf(targetId);
+      if(fromIdx<0||toIdx<0) return;
+      setlist.splice(fromIdx,1);
+      setlist.splice(toIdx,0,tid);
+      saveSetlist();
+      if(syncRole==='conductor'&&fbSetRef) fbSetRef.set({ids:[...setlist],keys:{...setKeys},timestamp:Date.now()});
+      renderSetStrip();
+      renderSetlistManager();
+    });
+  });
 }
 
 function slmCreateNew(){
