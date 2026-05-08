@@ -158,9 +158,9 @@ body{font-family:var(--font);background:var(--bg3);color:var(--txt);min-height:1
 .lyrics-panel{background:var(--bg2);border:.5px solid var(--bdr);border-radius:var(--rl);padding:1rem .75rem;margin-top:1rem}
 .lyrics-panel h3{font-size:13px;font-weight:500;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
 .lyric-section{margin-bottom:1.5rem;break-inside:avoid;-webkit-column-break-inside:avoid}
-.lyric-line{margin-bottom:10px;break-inside:avoid;-webkit-column-break-inside:avoid;overflow:hidden}
-.lyric-chord-row{font-size:15px;font-weight:700;color:#185FA5;white-space:pre-wrap;word-break:break-all;line-height:1.3;min-height:20px;letter-spacing:0;font-family:monospace}
-.lyric-word-row{font-size:17px;color:var(--txt);white-space:pre-wrap;word-break:break-word;line-height:1.6;font-family:monospace}
+.lyric-line{margin-bottom:10px}
+.lyric-chord-row{font-size:15px;font-weight:700;color:#185FA5;white-space:pre;line-height:1.3;min-height:20px;letter-spacing:0;font-family:monospace}
+.lyric-word-row{font-size:17px;color:var(--txt);white-space:pre;line-height:1.6;font-family:monospace}
 .lyric-section-label{font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
 /* Each line is a flex row of chord+word segments */
 /* legacy lyric-seg styles removed — using two-row chord layout */
@@ -2328,6 +2328,7 @@ function renderChart(song,key){
   </div>`;
   el.style.display='block';
   applyChartTheme();
+  setTimeout(autoFitLyrics,50); // after DOM paints
   document.getElementById('song-grid').style.display='none';
   document.getElementById('bottom-bar').style.display='none';
   document.getElementById('sync-bar').style.display='none';
@@ -3843,6 +3844,33 @@ function goHome(){
 function splashGoToSetlistManager(){
   document.getElementById('splash-screen').classList.remove('open');
   openSetlistManager();
+}
+
+function autoFitLyrics(){
+  // Find the lyrics panel and shrink font until no row overflows its container
+  const panel=document.querySelector('.lyrics-panel');
+  if(!panel) return;
+  const container=panel.closest('.chart-panel')||panel.parentElement;
+  if(!container) return;
+  const maxWidth=container.clientWidth - 24; // allow for padding
+  let fontSize=15; // start at default chord row size
+  // Reduce font size until all rows fit, minimum 9px
+  while(fontSize>9){
+    const rows=panel.querySelectorAll('.lyric-chord-row,.lyric-word-row');
+    let overflowing=false;
+    rows.forEach(row=>{if(row.scrollWidth>maxWidth) overflowing=true;});
+    if(!overflowing) break;
+    fontSize--;
+    panel.style.fontSize=fontSize+'px';
+    // Scale word row proportionally (it's normally 17px vs chord 15px = ratio 1.133)
+    panel.querySelectorAll('.lyric-chord-row').forEach(r=>r.style.fontSize=fontSize+'px');
+    panel.querySelectorAll('.lyric-word-row').forEach(r=>r.style.fontSize=Math.round(fontSize*1.133)+'px');
+  }
+  // Reset if no overflow at default size
+  if(fontSize===15){
+    panel.style.fontSize='';
+    panel.querySelectorAll('.lyric-chord-row,.lyric-word-row').forEach(r=>r.style.fontSize='');
+  }
 }
 
 function applyChartTheme(){
