@@ -2161,6 +2161,9 @@ function buildKeySelect(){
 //   Inline:  {segments:[{n:"4add2",w:"All my life "},{n:"1",w:"You have been faithful"}]}
 //            → chord shown above each word group
 function buildLyricsPanel(song,k,twoCol){
+  const fs=calcLyricsFontSize(song,k);
+  const chordSize=fs.chord+'px';
+  const wordSize=fs.word+'px';
   const data=SONG_LYRICS[song.id];
   if(!data||!data.sections||!data.sections.length){
     return `<div class="lyrics-panel"><h3>Lyrics</h3><p class="lyric-hint">No chorus/bridge lyrics on file for this song yet. You can add them via Edit.</p></div>`;
@@ -2248,7 +2251,7 @@ function buildLyricsPanel(song,k,twoCol){
     }
     const finalWord=wordRow.trimEnd();
     if(!finalChord&&!finalWord) return '';
-    return `<div class="lyric-line" data-linekey="${lineKey||''}"><div class="lyric-chord-row">${finalChord||'\u00a0'}</div><div class="lyric-word-row">${finalWord||'\u00a0'}</div></div>`;
+    return `<div class="lyric-line" data-linekey="${lineKey||''}"><div class="lyric-chord-row" style="font-size:${chordSize}">${finalChord||'\u00a0'}</div><div class="lyric-word-row" style="font-size:${wordSize}">${finalWord||'\u00a0'}</div></div>`;
   }
 
   const visibleSections=settingsShowVerses?data.sections:data.sections.filter(s=>!/^verse/i.test(s.label));
@@ -2328,7 +2331,6 @@ function renderChart(song,key){
   </div>`;
   el.style.display='block';
   applyChartTheme();
-  setTimeout(autoFitLyrics,50); // after DOM paints
   document.getElementById('song-grid').style.display='none';
   document.getElementById('bottom-bar').style.display='none';
   document.getElementById('sync-bar').style.display='none';
@@ -3847,30 +3849,55 @@ function splashGoToSetlistManager(){
 }
 
 function autoFitLyrics(){
-  // Find the lyrics panel and shrink font until no row overflows its container
-  const panel=document.querySelector('.lyrics-panel');
-  if(!panel) return;
-  const container=panel.closest('.chart-panel')||panel.parentElement;
-  if(!container) return;
-  const maxWidth=container.clientWidth - 24; // allow for padding
-  let fontSize=15; // start at default chord row size
-  // Reduce font size until all rows fit, minimum 9px
-  while(fontSize>9){
-    const rows=panel.querySelectorAll('.lyric-chord-row,.lyric-word-row');
-    let overflowing=false;
-    rows.forEach(row=>{if(row.scrollWidth>maxWidth) overflowing=true;});
-    if(!overflowing) break;
-    fontSize--;
-    panel.style.fontSize=fontSize+'px';
-    // Scale word row proportionally (it's normally 17px vs chord 15px = ratio 1.133)
-    panel.querySelectorAll('.lyric-chord-row').forEach(r=>r.style.fontSize=fontSize+'px');
-    panel.querySelectorAll('.lyric-word-row').forEach(r=>r.style.fontSize=Math.round(fontSize*1.133)+'px');
-  }
-  // Reset if no overflow at default size
-  if(fontSize===15){
-    panel.style.fontSize='';
-    panel.querySelectorAll('.lyric-chord-row,.lyric-word-row').forEach(r=>r.style.fontSize='');
-  }
+  // No-op — replaced by calcLyricsFontSize below
+}
+
+function calcLyricsFontSize(song,k){
+  // Calculate font size based on longest chord/word row character count
+  // Monospace char width at 15px ≈ 9px. Column = half panel minus gap ≈ 45% of screen.
+  // iPad screen ~1024px, panel ~980px, column ~440px → max chars at 15px = 440/9 = ~48
+  const data=SONG_LYRICS[song.id];
+  if(!data) return {chord:15,word:17};
+  const visibleSections=settingsShowVerses?data.sections:data.sections.filter(s=>!/^verse/i.test(s.label));
+  let maxLen=0;
+  visibleSections.forEach(sec=>{
+    sec.lines.forEach((line,li)=>{
+      const segments=line.segments||[{n:line.n||'',w:line.l||''}];
+      // Build the chord row and word row to measure actual char length
+      let chordRow='',wordRow='';
+      segments.forEach(seg=>{
+        const word=seg.w||'';
+        const chordName=seg.n?toChord(seg.n,k):'';
+        const lineKey=`${song.id}_${sec.label}_${li}`;
+        const ov=lyricOverrides[lineKey];
+        if(chordName){
+          const cd=chordName+' ';
+          const slot=Math.max(word.length,cd.length);
+          if(Array.isArray(ov)){
+            // with override, chord row can be longer
+            const pos=(ov[segments.indexOf(seg)])||0;
+            chordRow=' '.repeat(pos)+cd;
+          } else {
+            chordRow+=cd.padEnd(slot);
+          }
+          wordRow+=word.padEnd(slot);
+        } else {
+          chordRow+=' '.repeat(word.length);
+          wordRow+=word;
+        }
+      });
+      maxLen=Math.max(maxLen,chordRow.trimEnd().length,wordRow.trimEnd().length);
+    });
+  });
+  if(maxLen===0) return {chord:15,word:17};
+  // iPad column width in chars at 15px (9px/char monospace)
+  // Two columns: use half screen minus gap. Approx 44 chars fits at 15px.
+  const maxCharsAt15=44;
+  if(maxLen<=maxCharsAt15) return {chord:15,word:17};
+  const scale=maxCharsAt15/maxLen;
+  const chord=Math.max(9,Math.round(15*scale));
+  const word=Math.max(10,Math.round(17*scale));
+  return {chord,word};
 }
 
 function applyChartTheme(){
